@@ -23,8 +23,8 @@ mit herkörmlichen Mitteln nicht mehr effektiv Speichern und verarbeiten liesen
 und man nach Alternativen gesucht hat, den NoSql-Systemen.
 Obwohl der NoSql Begriff heute so eine Aktualität besitzt, gibt es keine bis
 heute keine einheitliche Begriffsdefinition. Vielmehr ist NoSql ähnlich wie
-AJAX ein Sammelbegriff für verschiedene Technologien und Ideen. Während früher
-NoSql wörtlich für „no Sql“ also "kein Sql" stand steht es heute eher für
+\gls{AJAX} ein Sammelbegriff für verschiedene Technologien und Ideen. Während
+früher NoSql wörtlich für „no Sql“ also "kein Sql" stand steht es heute eher für
 „not only Sql“ also "nicht nur Sql". Auch ab wann man ein System als
 NoSql-System zählt, ist nicht klar geregelt. Vielmehr gibt es eine Reihe von
 Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
@@ -37,7 +37,7 @@ Skallierbarkeit ausgerichtet.
 \item Das System ist schemafrei oder hat nur schwache Schemarestriktionen.
 \item Aufgrund der verteielten Architektur unterstützt das System einfache
 Datenreplikation.
-\item Das System besitz eine einfache API.
+\item Das System besitz eine einfache \gls{API}.
 \item Dem System liegt meist auch ein anderes Konsitenzmodell zugrunde:
 Eventuelly Consistenz und BASE aber nicht ACID.
 \end{itemize}
@@ -85,7 +85,7 @@ jeweiligen Typ vorzustellen hat und einige Vertreter davon:
 \item Kern-NoSql-Systeme
 \begin{description}
 \item[dokumentenbasierte Systeme] Dokumentenbasierte System speichern die Daten
-in Dateien, meist im JSON-Format, ab. Zu dieser Gruppe gehören Systeme wie
+in Dateien, meist im \gls{JSON}-Format, ab. Zu dieser Gruppe gehören Systeme wie
 MongoDB oder CouchDB.
 \item[Schlüssel-Wert-Systeme] Schlüssel-Wert-Systeme speichern wie der Name schon
 sagt die Daten unter einem gewissen Schlüssel ab, über den dann später die Daten
@@ -104,8 +104,13 @@ Schlüssel-Wert-Paaren sein. Zu dieser Gruppe gehören Systeme wie HBase, Cassan
 \end{description}
 \item Soft-NoSql-Systeme
 \begin{description}
-\item[XML-Datenbanken]
-\item[Objekt-Datenbanken]
+\item[XML-Datenbanken] XML-Datenbanken sind spezielle dokumentenbasierte Systeme
+bei denen statt \gls{JSON}-Dateien XML-Dateien benutzt werden.
+\item[Objekt-Datenbanken] Objekt-Datenbanken speichern Objektstrukturen ab.
+Vorraussetzung ist allerdings, das die Objekte serialisierbar sind. Werden
+solche Objekt-Datenbanken anstelle von relationalen Datenbanken eingesetzt, dann
+kann man sich den Einsatz von \gls{ORM}-Frameworks wie Hibernate oder EclipseLink
+sparen.
 \end{description}
 \end{itemize}
 

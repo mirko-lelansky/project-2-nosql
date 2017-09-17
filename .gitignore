@@ -2,6 +2,9 @@
 
 # Pattern for LaTeX
 
+*.acn
+*.acr
+*.alg
 *.aux
 *.bak
 *.bbl
@@ -9,6 +12,10 @@
 *.blg
 *.fdb_latexmk
 *.fls
+*.glg
+*.glo
+*.gls
+*.ist
 *.lof
 *.log
 *.lol
