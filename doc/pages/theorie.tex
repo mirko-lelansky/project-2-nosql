@@ -14,20 +14,28 @@ wie die jeweiligen Systeme dies umsetzen.
 \section{NoSql}
 NoSql-Systeme sind keine neue Erfindung, sondern entwickelten sich quasi
 parallel mit den relationalen Systemen. Der Grund warum erst jetzt NoSql einen
-so großen Durchbruch erfährt, hängt vor allem mit dem BigData-Gedanken zusammen.
-Vor BigData war es üblich die Geschäftsdaten auf wenigen Datenbank-Server zu
-speichern. Mit der Entwicklung der Sozialen-Netzwerke und der zunehmenden
-Vernetzung von Alltagsgegenständen stieg die erzeugte Datenmenge rapide auf
-Peta-, Exa-Byte Bereich an. Dies hatte zur Folge, dass sich die Geschäftsdaten
-mit herkömmlichen Mitteln nicht mehr effektiv Speichern und verarbeiten ließen
-und man nach Alternativen gesucht hat, den NoSql-Systemen.
-Obwohl der NoSql Begriff heute so eine Aktualität besitzt, gibt es keine
-einheitliche Begriffsdefinition. Vielmehr ist NoSql ähnlich wie \gls{AJAX} ein
-Sammelbegriff für verschiedene Technologien und Ideen. Während früher NoSql
-wörtlich für „no Sql“ also "kein Sql" stand steht es heute eher
-für „not only Sql“ also "nicht nur Sql". Auch ab wann man ein System als
-NoSql-System zählt, ist nicht klar geregelt. Vielmehr gibt es eine Reihe von
-Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
+so großen Durchbruch erfährt, hängt vor allem mit dem \gls{BigData}-Gedanken
+zusammen. Vor BigData war es üblich die Geschäftsdaten auf einem
+Datenbank-Server zu speichern und diesen vertikal zu skallieren, bis ein neuer
+Server angeschafft wurde. Mit der Entwicklung der Sozialen-Netzwerke und der
+zunehmenden Vernetzung von Alltagsgegenständen stieg die erzeugte Datenmenge
+rapide auf Peta-, Exa-Byte Bereich an. Damit war man gezwungen die Daten auf
+viele Maschinen zu verteilen. Zu den Anfangszeiten versuchten die relationalen
+Anbieter dies mit ihrer herkörmlichen Technologie. Allerdings scheiterten sie an
+den Anforderungen. Denn sie versuchten horizontale Skallierbarkeit, Konsistenz
+der Knoten und Daten, Datenreplikation, hohe Verfügbarkeit und schnelle
+Antwortzeiten miteinander zu kombinieren. Dies konnte jedoch nicht aufgrund der
+Architektur der relationalen Systeme funktionieren. Deshalb wurde nach
+Alternativen gesucht, den NoSql-Systemen.
+
+Was sind nun konkret NoSql-System und was bedeutet NoSql eigentlich? Obwohl der
+NoSql Begriff heute so eine Aktualität besitzt, gibt es keine einheitliche
+Begriffsdefinition. Vielmehr ist NoSql ähnlich wie \gls{AJAX} ein Sammelbegriff
+für verschiedene Technologien und Ideen. Während früher NoSql wörtlich
+für „no Sql“ also "kein Sql" stand steht es heute eher für „not only Sql“ also
+"nicht nur Sql". Auch ab wann man ein System als NoSql-System zählt, ist nicht
+klar geregelt. Vielmehr gibt es eine Reihe von Punkten, die ein System erfüllen
+kann wie: \cite{Edlich2011}
 
 \begin{itemize}
     \item Das zugrundeliegende Datenmodell ist nicht relational.
@@ -42,7 +50,12 @@ Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
         Eventuelly Consistenz und \gls{BASE} aber nicht \gls{ACID}.
 \end{itemize}
 
-. Daraus haben sich die unterschiedlichsten Systeme entwickelt.
+. Allerdings muss man bei NoSql gewisse Einschränkungen machen. NoSql-Systeme
+verfügen zwar über die Eigenschaften Verfügbarkeit, Konsistenz der Knoten und
+Partitionstoleranz, jedoch können niemals alle drei Eigenschaften gleichzeitig
+erfüllt sein, sondern nur zwei. Diese Problematik ist auch unter
+dem \gls{CAP}-Theorem bekannt. Deshalb gibt es auch viele verschiedene
+NoSql-Systeme.
 
 \subsection{Entwicklungsmeilensteine}
 Der Ursprung von NoSql ist die im Jahr 1979 von Ken Thompson entwickelte
@@ -67,8 +80,7 @@ eigenen Lösungen nach und heute kann man sagen, dass es den Map-/Reduce-Ansatz
 nicht mehr gibt, sondern verschiedene Implementierungen, die für einen gewissen
 Einsatzzweck entwickelt wurden. Die Entwicklung der modernen NoSql-Systemen
 begann im Jahr 2005 mit Systemen wie Neo4j\footnote{\url{http://www.neo4j.com}},
-Redis\footnote{\url{http://www.redis.io}},
-Cassandra\footnote{\url{http://cassandra.apache.org}},~\dots{} und hält bis
+Redis, Cassandra\footnote{\url{http://cassandra.apache.org}},~\dots{} und hält bis
 heute noch an.
 
 \subsection{Arten von NoSql-Systemen}
