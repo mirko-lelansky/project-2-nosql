@@ -1,0 +1,24 @@
+= Masterproject 2 - NoSql (Key-Value-Stores)
+
+The goal of the project is to compare different NoSql Key-Value-Stores.
+It should be compared [Redis](http://www.redis.io),
+[Memcached](http://www.memcached.org) and one free selected system.
+
+== Modules
+
+The project contains two modules one for the documentation and one
+for the code.
+
+== Dependencies
+
+The documentation module uses LaTeX with bibliographies. That means you have to
+install Texlive or MikeTex with Biber.
+
+The code module use Python and C. That means you have to install a Python and C
+environment. You need also some addional libraries for the NoSql Systems to
+access their APIs.
+
+== License
+
+The project is licensed under the Apache 2 License -
+see the LICENSE.adoc file for details.
