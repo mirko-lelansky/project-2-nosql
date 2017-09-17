@@ -179,7 +179,7 @@ Memcached ist ein NoSql-System und gehört in die Gruppe der
 Schlüssel-Wert-Systeme und in die Untergruppe der Caches 
 \begin{quote}
    „Free \& open source, high-performance, distributed memory object caching
-    system [\dots]" \cite{Memcached2015} 
+    system [\dots]" \cite{Memcached2015}
 \end{quote}
 . Memcached wurde im Jahr 2003 von Brad Fitzpatrick bei der Firma Danga
 Interactive heute Say Media für die Webseite LiveJournal entwickelt. Die
@@ -202,7 +202,7 @@ eine Bibliothek für die jeweilige Programmiersprache. Sobald Daten geschrieben
 oder gelesen werden sollen, berechnet die Bibliothek aus der Anfrage eine
 Hash-Summe, welche den Server identifieziert, welcher die Anfrage bekommen
 soll. Dieser verarbeitet dann die Anfrage und gibt die Daten zurück oder
-speichert die Daten unter einer neu berechneten Hash-Summe 
+speichert die Daten unter einer neu berechneten Hash-Summe
 
 \begin{quote}
     „Zunächst nimmt die Client-Bibliothek den Schlüssel und errechnet aus ihm
@@ -210,7 +210,7 @@ speichert die Daten unter einer neu berechneten Hash-Summe
     genannten Hashwert. Diese Nummer sagt der Bibliothek, an welchen
     Memcached-Daemon sie sich wenden muss. Nachdem dieser alle Daten erhalten
     hat, errechnet er mit einer eigenen Hashfunktion die Speicherstelle, unter
-    der er die Daten schließlich einlagert." \cite{Schuermann2009} 
+    der er die Daten schließlich einlagert." \cite{Schuermann2009}
 \end{quote}
 .
 
@@ -234,3 +234,39 @@ Die maximale Größe ist dabei standartmäßig 64 MB, dies lässt allerdings
 konfigurieren. Jedoch sollte die Größe immer kleiner sein als
 der \gls{RAM}-Speicher des Memcached-Dienstes mit dem kleinsten
 zugewiesenen \gls{RAM}.
+
+\subsection{Redis}
+Redis ist ebenfalls ein Schlüssel-Wert-System, gehört aber normalerweise in die
+Untergruppe der Festplatten-Systeme. Redis lässt sich jedoch auch in die Gruppe
+der Cache-Systeme eintragen, wenn eine bestimmte Konfiguration benutzt wird.
+Im Normalbetrieb hällt Redis seine Daten im \gls{RAM} und legt in bestimmten
+Abständen einen Zwischenstand auf der Festplatte ab. Wenn man Redis in der
+Konfiguration als reinen Cache laufen lässt, dann werden keine Zwischenstände
+abgelegt und Redis würde sich dann so wie Memcached verhalten
+\begin{quote}
+    „In order to achieve its outstanding performance, Redis works with an
+    in-memory dataset. Depending on your use case, you can persist it either by
+    dumping the dataset to disk every once in a while, or by appending each
+    command to a log. Persistence can be optionally disabled, if you just need
+    a feature-rich, networked, in-memory cache.“ \cite{Redis2010}
+\end{quote}
+. Redis wurde im Jahr 2009 von Salvatore Sanfilippo bei Redis Labs entwickelt.
+Die aktuelle Version ist 4.0.1. Redis ist komplett in C geschrieben.
+Redis läuft ebenfalls nach einem Client-Server-Modell, jedoch mit dem
+Unterschied, dass immer nur eine Redis-Dienst läuft. Der Zugriff auf den Server
+erfolgt ebenfalls über die Client-Bibliothek. Der wichtigste Unterschied
+zwischen Redis und Memcached sind die erlaubten Schlüssel und Werte. Wie schon
+oben erwähnt sind Schlüssel in Memcached immer Zeichenketten mit einer
+maximalen Länge von 250 Zeichen. Im Gegensatz dazu existiert diese Einschränkung
+bei Redis nicht. Dort ist es ohne Probleme möglich auch ein Bild als Schlüssel
+zu verwenden
+\begin{quote}
+    „Redis keys are binary safe, this means that you can use any binary sequence
+    as a key, from a string like ‚foo‘ to the content of a JPEG file. The empty
+    string is also a valid key. [\dots]“ \cite{Redis2010}
+\end{quote}
+. Der Schlüssel wie auch die Werte dürfen lediglich die 512 MB Grenze nicht
+überschreiten. Bei den zulässigen Werten unterscheidet sich Redis stark von den
+anderen Systemen. Während Memcached nur Zeichenketten oder serialisierte Objekte
+speichern kann ist Redis in der Lage mit Listen, Mengen und Wörterbüchern direkt
+umzugehen.
