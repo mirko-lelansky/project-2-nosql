@@ -6,9 +6,10 @@
 \newcommand{\euro}{€}
 \usepackage[usenames, dvipsnames]{xcolor}
 \usepackage{polyglossia}
-\setdefaultlanguage{german}
+\setdefaultlanguage[spelling=new]{german}
 \setotherlanguage[variant=british]{english}
-\usepackage{csquotes}
+\usepackage[autostyle=true]{csquotes}
+\renewcommand{\mkblockquote}[4]{\openautoquote#1\closeautoquote#2#4#3}
 \usepackage[backend=biber, style=iso-authoryear]{biblatex}
 \addbibresource{bib/main.bib}
 \usepackage[section]{placeins}

@@ -6,7 +6,7 @@ Dazu wird zuerst erklärt, was man unter NoSql versteht und eine kurze Zeitlinie
 der Entwicklung. Anschließend werden die verschiedenen Arten von NoSql und
 speziell von Schlüssel-Wert-Systemen beschrieben.
 
-Danach folgt der Vergleich von Redis, Memcached und Voldemort. Dazu werden
+Danach folgt der Vergleich von Memcached, Redis und Voldemort. Dazu werden
 zuerst die jeweiligen Systeme erläutert. Anschließend folgt der eigentliche
 Vergleich, dazu werden die jeweiligen Eigenschaften kurz erläutert und danach
 wie die jeweiligen Systeme dies umsetzen.
@@ -16,13 +16,13 @@ NoSql-Systeme sind keine neue Erfindung, sondern entwickelten sich quasi
 parallel mit den relationalen Systemen. Der Grund warum erst jetzt NoSql einen
 so großen Durchbruch erfährt, hängt vor allem mit dem \gls{BigData}-Gedanken
 zusammen. Vor BigData war es üblich die Geschäftsdaten auf einem
-Datenbank-Server zu speichern und diesen vertikal zu skallieren, bis ein neuer
+Datenbank-Server zu speichern und diesen vertikal zu skalieren, bis ein neuer
 Server angeschafft wurde. Mit der Entwicklung der Sozialen-Netzwerke und der
 zunehmenden Vernetzung von Alltagsgegenständen stieg die erzeugte Datenmenge
 rapide auf Peta-, Exa-Byte Bereich an. Damit war man gezwungen die Daten auf
 viele Maschinen zu verteilen. Zu den Anfangszeiten versuchten die relationalen
-Anbieter dies mit ihrer herkörmlichen Technologie. Allerdings scheiterten sie an
-den Anforderungen. Denn sie versuchten horizontale Skallierbarkeit, Konsistenz
+Anbieter dies mit ihrer herkömmlichen Technologie. Allerdings scheiterten sie an
+den Anforderungen. Denn sie versuchten horizontale Skalierbarkeit, Konsistenz
 der Knoten und Daten, Datenreplikation, hohe Verfügbarkeit und schnelle
 Antwortzeiten miteinander zu kombinieren. Dies konnte jedoch nicht aufgrund der
 Architektur der relationalen Systeme funktionieren. Deshalb wurde nach
@@ -32,10 +32,10 @@ Was sind nun konkret NoSql-System und was bedeutet NoSql eigentlich? Obwohl der
 NoSql Begriff heute so eine Aktualität besitzt, gibt es keine einheitliche
 Begriffsdefinition. Vielmehr ist NoSql ähnlich wie \gls{AJAX} ein Sammelbegriff
 für verschiedene Technologien und Ideen. Während früher NoSql wörtlich
-für „no Sql“ also "kein Sql" stand steht es heute eher für „not only Sql“ also
-"nicht nur Sql". Auch ab wann man ein System als NoSql-System zählt, ist nicht
-klar geregelt. Vielmehr gibt es eine Reihe von Punkten, die ein System erfüllen
-kann wie: \cite{Edlich2011}
+für \enquote{no Sql} also \enquote{kein Sql} stand steht es heute eher für
+\enquote{not only Sql} also \enquote{nicht nur Sql}. Auch ab wann man ein System
+als NoSql-System zählt, ist nicht klar geregelt. Vielmehr gibt es eine Reihe von
+Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
 
 \begin{itemize}
     \item Das zugrundeliegende Datenmodell ist nicht relational.
@@ -54,7 +54,7 @@ kann wie: \cite{Edlich2011}
 verfügen zwar über die Eigenschaften Verfügbarkeit, Konsistenz der Knoten und
 Partitionstoleranz, jedoch können niemals alle drei Eigenschaften gleichzeitig
 erfüllt sein, sondern nur zwei. Diese Problematik ist auch unter
-dem \gls{CAP}-Theorem bekannt. Deshalb gibt es auch viele verschiedene
+dem \gls{CAP}-Theorem bekannt. Deswegen gibt es auch viele verschiedene
 NoSql-Systeme.
 
 \subsection{Entwicklungsmeilensteine}
@@ -110,8 +110,8 @@ jeweiligen Typ vorzustellen hat und einige Vertreter davon:
                 Daten als Graph vor. Solche Systeme ermöglichen es leicht
                 herauszufinden, welcher Knoten mit einem anderen Knoten in
                 Beziehung steht. Dies wird bei Sozialennetzwerken bezutzt um
-                herauszufinden, wer "Freund" von jemanden ist. Zu dieser Gruppe
-                gehören Systeme wie Neo4j.
+                herauszufinden, wer \enquote{Freund} von jemanden ist. Zu
+                dieser Gruppe gehören Systeme wie Neo4j.
             \item[spaltenorientierte Systeme] Spaltenorientiert System haben
                 Ähnlichkeiten mit relationalen Systemen, die ja auch über
                 Spalten verfügen. Allerdings kann man bei einem
@@ -136,7 +136,7 @@ jeweiligen Typ vorzustellen hat und einige Vertreter davon:
         \end{description}
 \end{itemize}
 
-. Im weiteren Verlauf werden wir nur noch Schlüssel-Wert-Systeme betrachten.
+. Die hier untersuchten Systeme gehören alle zu den Schlüssel-Wert-Systemen an.
 
 \section{Schlüssel-Wert-Systeme}
 Schlüssel-Wert-Systeme sind Systeme, die wie der Name schon sagt, einen Wert,
@@ -148,14 +148,11 @@ Andere Systeme lassen erst einmal oder mehrmals einen Hash-Algorithmus über den
 Daten laufen und nehmen die erzeugte Hash-Summe als Schlüssel. Auch die Werte
 sind im einfachsten Fall einfache Zeichenketten, jedoch können manche Systeme
 auch komplexere Datenstrukturen wie Listen, Mengen, Wörterbücher,~\dots{}
-speichern. Wenn man die Geschwindigkeit der Operationen betrachtet, dann stellt
-man fest, dass die Lese-Operation schnell ist, vorausgesetzt man kennt den
-Schlüssel und die Schreib-Operation langsam. Die Schlüssel-Wert-Systeme lassen
-sich nochmals in verschiedene Gruppen einteilen, wobei jede Gruppe eine
-Eigenschaft fokussiert.
+speichern. Die Schlüssel-Wert-Systeme lassen sich nochmals in verschiedene
+Gruppen einteilen, wobei jede Gruppe eine Eigenschaft fokussiert.
 
 \subsubsection{Arten von Schlüssel-Wert-Systemen}
-Schlüssel-Wert-Systeme lassen sich in Gruppen einteilen. Dabei hat jede Gruppen
+Schlüssel-Wert-Systeme lassen sich in Gruppen einteilen. Dabei hat jede Gruppe
 eine spezifische Eigenschaft. Diese Einteilung ist aber keineswegs fest, sondern
 ein System kann durchaus auch mehreren Gruppen angehören, je nachdem wie seine
 aktuelle Konfiguration ist. Die folgende Liste spezifieziert die möglichen
@@ -183,47 +180,49 @@ Gruppen:
         ist. Zu dieser Gruppe gehören Systeme wie Voldemort.
 \end{description}
 
-. Nachfolgend folgt der allgemeine Überblick über die drei ausgewählten Systeme
-Memcached, Redis und Voldemort.
+. Das erste zu untersuchende System Memcached ist ein reines Cache-System.
+Redis ist ein Mischsystem aus Cache und Festplatten-System und Voldemort ist
+ein Eventual-Consistence-System. Nachfolgend folgt der allgemeine Überblick über
+die drei ausgewählten Systeme Memcached, Redis und Voldemort.
 
 \subsection{Memcached}
 Memcached ist ein NoSql-System und gehört in die Gruppe der
 Schlüssel-Wert-Systeme und in die Untergruppe der Caches 
-\begin{quote}
-   „Free \& open source, high-performance, distributed memory object caching
-    system [\dots]" \cite{Memcached2015}
-\end{quote}
+
+\foreignblockquote{english}[\cite{Memcached2015}]{Free \& open source,
+high-performance, distributed memory object caching system [\ldots]}
+
 . Memcached wurde im Jahr 2003 von Brad Fitzpatrick bei der Firma Danga
 Interactive heute Say Media für die Webseite LiveJournal entwickelt. Die
 aktuelle Version ist die Version 1.5.0. Die ersten Versionen von Memcached
 waren in Perl geschrieben. Später wurde der Memcached in C neugeschrieben. Der
 Vorteil von Memcached liegt in der Beschleunigung von Webseiten in dem es
 Datenbank-, Webservice- und Templateergenbisse zwischenspeichert 
-\begin{quote}
-    „[\dots{}] but intended for use in speeding up dynamic web
-applications by alleviating database load. Memcached is an in-memory key-value
-store for small chunks of arbitrary data (strings, objects) from results of
-database calls, API calls, or page rendering." \cite{Memcached2015}
-\end{quote}
-.
 
-Memcached arbeitet nach einem Client-Server-Modell siehe dazu auch die
-Abbildung \ref{fig:memcached-architecture}. Zunächst läuft auf dem
-Server bzw. den Servern ein Dienst oder mehrere. Der Zugriff erfolgt dann über
-eine Bibliothek für die jeweilige Programmiersprache. Sobald Daten geschrieben
-oder gelesen werden sollen, berechnet die Bibliothek aus der Anfrage eine
-Hash-Summe, welche den Server identifieziert, welcher die Anfrage bekommen
-soll. Dieser verarbeitet dann die Anfrage und gibt die Daten zurück oder
-speichert die Daten unter einer neu berechneten Hash-Summe
+\foreignblockquote{english}[\cite{Memcached2015}]{[\dots{}] but intended for
+use in speeding up dynamic web applications by alleviating database load.
+Memcached is an in-memory key-value store for small chunks of arbitrary
+data (strings, objects) from results of database calls, API calls, or page
+rendering.}
 
-\begin{quote}
-    „Zunächst nimmt die Client-Bibliothek den Schlüssel und errechnet aus ihm
-    mit einer ausgeklügelten, mathematischen Funktion eine Zahl, den so
-    genannten Hashwert. Diese Nummer sagt der Bibliothek, an welchen
-    Memcached-Daemon sie sich wenden muss. Nachdem dieser alle Daten erhalten
-    hat, errechnet er mit einer eigenen Hashfunktion die Speicherstelle, unter
-    der er die Daten schließlich einlagert." \cite{Schuermann2009}
-\end{quote}
+. Zunächst läuft auf dem Server bzw. den Servern ein oder mehrere Dienste. Der
+Zugriff erfolgt dann über eine Bibliothek für die jeweilige Programmiersprache.
+Die Abbildung \ref{fig:memcached-architecture} zeigt die eben beschriebene
+Architektur.
+
+Sobald Daten geschrieben oder gelesen werden sollen, berechnet die Bibliothek
+aus einer mathematischen Funktion ein Ergebnis, den Hash-Wert. Dieser Wert legt
+fest, welcher Server die Anfrage bekommen soll. Dieser verarbeitet dann die
+Anfrage und gibt entweder die Daten zurück oder berechnet aus den zu
+speichernden Daten einen weiteren Hash-Wert und speichert die Daten unter
+diesem ab.
+
+\blockquote[\cite{Schuermann2009}]{Zunächst nimmt die Client-Bibliothek den
+Schlüssel und errechnet aus ihm mit einer ausgeklügelten, mathematischen
+Funktion eine Zahl, den so genannten Hashwert. Diese Nummer sagt der Bibliothek,
+an welchen Memcached-Daemon sie sich wenden muss. Nachdem dieser alle Daten
+erhalten hat, errechnet er mit einer eigenen Hashfunktion die Speicherstelle,
+unter der er die Daten schließlich einlagert.}
 .
 
 \begin{figure}
@@ -251,34 +250,38 @@ zugewiesenen \gls{RAM}.
 Redis ist ebenfalls ein Schlüssel-Wert-System, gehört aber normalerweise in die
 Untergruppe der Festplatten-Systeme. Redis lässt sich jedoch auch in die Gruppe
 der Cache-Systeme eintragen, wenn eine bestimmte Konfiguration benutzt wird.
-Im Normalbetrieb hällt Redis seine Daten im \gls{RAM} und legt in bestimmten
-Abständen einen Zwischenstand auf der Festplatte ab. Wenn man Redis in der
-Konfiguration als reinen Cache laufen lässt, dann werden keine Zwischenstände
-abgelegt und Redis würde sich dann so wie Memcached verhalten
-\begin{quote}
-    „In order to achieve its outstanding performance, Redis works with an
-    in-memory dataset. Depending on your use case, you can persist it either by
-    dumping the dataset to disk every once in a while, or by appending each
-    command to a log. Persistence can be optionally disabled, if you just need
-    a feature-rich, networked, in-memory cache.“ \cite{Redis2010}
-\end{quote}
-. Redis wurde im Jahr 2009 von Salvatore Sanfilippo bei Redis Labs entwickelt.
+Redis wurde im Jahr 2009 von Salvatore Sanfilippo bei Redis Labs entwickelt.
 Die aktuelle Version ist 4.0.1. Redis ist komplett in C geschrieben.
-Redis läuft ebenfalls nach einem Client-Server-Modell, jedoch mit dem
-Unterschied, dass immer nur eine Redis-Dienst läuft. Der Zugriff auf den Server
-erfolgt ebenfalls über die Client-Bibliothek. Der wichtigste Unterschied
-zwischen Redis und Memcached sind die erlaubten Schlüssel und Werte. Wie schon
-oben erwähnt sind Schlüssel in Memcached immer Zeichenketten mit einer
-maximalen Länge von 250 Zeichen. Im Gegensatz dazu existiert diese Einschränkung
-bei Redis nicht. Dort ist es ohne Probleme möglich auch ein Bild als Schlüssel
-zu verwenden
-\begin{quote}
-    „Redis keys are binary safe, this means that you can use any binary sequence
-    as a key, from a string like ‚foo‘ to the content of a JPEG file. The empty
-    string is also a valid key. [\dots]“ \cite{Redis2010}
-\end{quote}
+Der Zugriff auf einen Redis-Server erfolgt wie bei Memcached über eine Bibliothek.
+Allerdings darf bei Redis im Gegensatz zu Memcached nur ein Dienst pro Server
+laufen. Der wichtigste Unterschied zwischen Redis und Memcached sind die
+erlaubten Schlüssel und Werte. Wie schon oben erwähnt sind Schlüssel in Memcached
+immer Zeichenketten mit einer maximalen Länge von 250 Zeichen. Im Gegensatz dazu
+existiert diese Einschränkung bei Redis nicht. Dort ist es ohne Probleme möglich
+auch ein Bild als Schlüssel zu verwenden
+
+\foreignblockquote{english}[\cite{Redis2010}]{Redis keys are binary safe, this
+means that you can use any binary sequence as a key, from a string like ‚foo‘
+to the content of a JPEG file. The empty string is also a valid key. [\dots]}
+
 . Der Schlüssel wie auch die Werte dürfen lediglich die 512 MB Grenze nicht
 überschreiten. Bei den zulässigen Werten unterscheidet sich Redis stark von den
 anderen Systemen. Während Memcached nur Zeichenketten oder serialisierte Objekte
 speichern kann ist Redis in der Lage mit Listen, Mengen und Wörterbüchern direkt
 umzugehen.
+
+\subsection{Voldemort}
+Voldemort ist ein Schlüssel-Wert-System und gehört in die Untergruppe der
+Eventuell-Consistence-Systeme und ist eine OpenSource Implementierung von
+Amazons DynamoDB. Voldemort wurde im Jahr 2009 von Jay Kreps und Bhupesh Bansal
+bei LinkedIn entwickelt. Die aktuelle Version ist 1.10.24. Voldemort ist komplett
+in Java geschrieben. Der große Vorteil von Voldemort liegt in der Verfügbarkeit.
+Die Idee dabei ist, falls ein Server nicht verfügbar ist und man deswegen nicht
+auf die Daten zugreifen kann, dass man dann nicht alle Server nach den Daten
+durchsucht, sondern nur die nächsten. Dafür werden die Server gedanklich zu
+einem Ring zusammengefügt. Der Zugriff erfolgt wie bei den anderen Systemen
+über eine Bibliothek. Ähnlich wie bei Memcached kann auch bei Voldemort ein
+oder mehrere Dienste gleichzeitig laufen. Voldemort macht bei der Wahl der
+Schlüssel und Werte keine Einschränkung. Es muss lediglich eine Klasse
+geschrieben werden, die Schlüssel und die Werte serialisieren und
+de-serialisieren kann.
