@@ -131,3 +131,33 @@ die Benutzer Bewertungen für die jeweiligen Sachen ab und ein Algorithmus
 erstellt daraus eine neue Liste. Der Administrator kann neue Gegenstände ins
 System einstellen. Sowohl der Administrator als auch die Benutzer können sich
 jederzeit die neuste Liste ansehen.
+
+\subsection{Beschreibung der Architktur und Entscheidungen}
+Der Anwendungsfall soll als Web-Anwendung in der Programmiersprache Python
+umgesetzt werden. Dadurch besteht die Anwendung aus vier Komponenten das
+Frontend, das Backend, die Datenbank und das jeweilige NoSql-System. Je nach
+Anforderung und eigener Erfahrung kann man sich nun bei einzelnen Komponenten,
+allen Komponenten oder keiner Komponente unterstützen lassen. Dies hat einen
+Einfluss auf die zugrundeliegende Architektur. Wenn man nur bei einigen
+Komponenten Unterstützung haben möchte, setzt man sogenannte Micro-Frameworks
+ein. Wenn man in bei allen Komponenten unterstützt werden möchte, nimmt man
+sogenannte Full-Stack-Frameworks. Wer keine Unterstützung braucht benutzt
+verschiedene Bibliotheken, welche eine gewisse Funktionalität bereitstellen uns
+selbständig integriert werden müssen.
+
+Für dieses Projekt wurde das Full-Stack-Framework
+django\footnote{\url{http://www.djangoproject.com}} ausgewählt, weil es weit
+verbreitet ist. Außerdem bietet es für viele bekannte Probleme bereits
+vorgefertigte Lösungen an. Dazu gehört zum Beispiel die Integration von
+NoSql-Systemen. Django unterstützt dabei von Hause aus Memcached. Redis lässt
+sich einfach über eine Bibliothek mit anbinden. Auch unterstützt django die
+Anbindung einer Datenbank, welche jedoch der Einfachheit halber schon gefüllt
+sein kann.
+
+Das Frontend besteht dabei aus Html-Seiten für die Struktur, welche spezielle
+Makros enthalten, um die Daten aus dem Backend anzuzeigen. Das Backend ist das
+Herz der Anwendung und besteht aus Python-Dateien. Es sorgt für die
+Kommunikation mit der Datenbank und bereitet deren Daten für das Frontend auf.
+Außerdem sorgt das Backend für die Kommunikation mit dem NoSql-System, um die
+Daten für einen schnelleren Zugriff abzulegen. Die Datenbank speichert die Daten
+für den späteren Gebrauch.
