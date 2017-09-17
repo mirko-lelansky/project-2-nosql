@@ -1,1 +1,112 @@
 \chapter{Theoretische Grundlagen}
+In diesem Kapitel werden die für die Realisierung benötigten Technologien und
+Methoden beschrieben.
+
+Dazu wird zuerst erklärt, was man unter NoSql versteht und eine kurze Zeitlinie
+der Entwicklung. Anschliend werden die verschiedenen Arten von NoSql und
+speziell von Schlüssel-Wert-Systemen beschrieben.
+
+Danach folgt der Vergleich von Redis, Memcached und Voldemort. Dazu werden
+zuerst die jeweiligen Systeme erläutert. Anschließend folgt der eigentliche
+Vergleich, dazu werden die jeweiligen Eigenschaften kurz erläutert und danach
+wie die jeweiligen Systeme dies umsetzen.
+
+\section{NoSql}
+NoSql-Systeme sind keine neue Erfindung, sondern entwickelten sich quasi
+parallel mit den relationalen Systemen. Der Grund warum erst jetzt NoSql einen
+so großen Durchbruch erfährt, hängt vor allem mit dem BigData-Gedanken zusammen.
+Vor BigData war es üblich die Geschäftsdaten auf wenigen Datenbank-Server zu
+speichern. Mit der Entwicklung der Sozialen-Netzwerke und der zuhnemenden
+Vernetzung von Alltagsgegenständen stieg die erzeugte Datenmenge rapide auf
+Peta-, Exa-Byte Bereich an. Dies hatte zur Folge, dass sich die Geschäftdaten
+mit herkörmlichen Mitteln nicht mehr effektiv Speichern und verarbeiten liesen
+und man nach Alternativen gesucht hat, den NoSql-Systemen.
+Obwohl der NoSql Begriff heute so eine Aktualität besitzt, gibt es keine bis
+heute keine einheitliche Begriffsdefinition. Vielmehr ist NoSql ähnlich wie
+AJAX ein Sammelbegriff für verschiedene Technologien und Ideen. Während früher
+NoSql wörtlich für „no Sql“ also "kein Sql" stand steht es heute eher für
+„not only Sql“ also "nicht nur Sql". Auch ab wann man ein System als
+NoSql-System zählt, ist nicht klar geregelt. Vielmehr gibt es eine Reihe von
+Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
+
+\begin{itemize}
+\item Das zugrundeliegende Datenmodell ist nicht relational.
+\item Die System sind von Anbeginn auf eine verteilelte und horizontale
+Skallierbarkeit ausgerichtet.
+\item Das NoSql-System ist Open-Source.
+\item Das System ist schemafrei oder hat nur schwache Schemarestriktionen.
+\item Aufgrund der verteielten Architektur unterstützt das System einfache
+Datenreplikation.
+\item Das System besitz eine einfache API.
+\item Dem System liegt meist auch ein anderes Konsitenzmodell zugrunde:
+Eventuelly Consistenz und BASE aber nicht ACID.
+\end{itemize}
+
+. Daraus haben sich die unterschiedlichsten Systeme entwickelt.
+
+\subsection{Entwicklungsmeilensteine}
+Der Ursprung von NoSql ist die im Jahr 1979 von Ken Thompson entwickelte
+Datenbank DBM\footnote{\url{http://www.gnu.org/software/gdbm/gdbm.html}}, die
+bis heute noch von Linux verwendet wird. Die ersten NoSql Datenbanken, die
+heute noch existieren entsanden in den 80er-Jahren, wie Lotus Note\footnote{\url{http://www-03.ibm.com/software/products/de/ibmdomino}},
+BerkleyDB\footnote{\url{http://www.oracle.com/us/products/database/berkeley-db/index.html}},
+GT.M\footnote{\url{https://sourceforge.net/projects/fis-gtm/https://sourceforge.net/projects/fis-gtm/}}, \ldots .
+Der Begriff NoSql wurde das erste Mal 1998 von Carlo Strozzi benutzt, der eine
+relationale Datenbank entwickelt hatte jedoch ohne Sql. Der richtige Durchbruch
+kam allerdings erst im Jahr 2000 mit dem Web 2.0 und den daraus resultierenden
+Anstieg des Datenvolumens. Dieser Datenanstieg erforderte neue Methoden zur
+effizenteren Speicherung und Verarbeitung. Google war dabei der Vorreiter mit
+seinem Map-/Reduce-Ansatz. Die Idee dabei ist es, eine große Datenmenge in
+kleinere Pakete aufzuteilen und diese dann unabhängig voneinander zu verarbeiten.
+Anschließend werden die einzelnen Zwischenergebnisse gesammelt und zu einen
+Gesammtergebnis zusammengefasst. Diese Idee ließ sich sehr gut mit den Ideen
+der funktionalen Programmiersprachen umsetzen, denn dort wird auf einer Kopie
+der tatsächlichen Daten gearbeitet. Später zogen die anderen großen Firmen mit
+eigenen Lösungen nach und heute kann man sagen, dass es den Map-/Reduce-Ansatz
+nicht mehr gibt, sondern verschiedene Implementierungen, die für einen gewissen
+Einsatzzweck entwickelt wurden. Die Entwicklung der mordernen NoSql-Systemen
+begann im Jahr 2005 mit Systemen wie Neo4j, Redis, Cassandra, \ldots und hält
+bis heute noch an.
+
+\subsection{Arten von NoSql-Systemen}
+Wie oben schon beschrieben existieren eine Vielzahl an unterschiedlichsten
+NoSql-Systemen. Dies hat zur Folge, dass es nicht leicht ist das für seinen
+Anwendungsfall passende System zu finden. Deshalb kam der Gedanke NoSql-Systeme
+nach bestimmten Kriterien zu sortieren um eine bessere Entscheidung treffen zu
+können. Schnell entwickelten sich mehrere Kriterien. Die gröbste Einteillung,
+die man vorgenommen hat, war die Einteillung in Kern-NoSql-Systeme und
+Soft-NoSql-Systemen. Wobei die Grenze und der Unterschied zwischen den Gruppen
+nicht klar geregelt ist. Danach werden NoSql-Systeme häufig nach ihrem
+zugrundeliegenden Datenmodell eingeteilt. Nachfolgend folgt eine Einteilung der
+NoSql-Systeme nach dem Datenmodell mit einer Erklärung was man sich unter dem
+jeweiligen Typ vorzustellen hat und einige Vertreter davon:
+
+\begin{itemize}
+\item Kern-NoSql-Systeme
+\begin{description}
+\item[dokumentenbasierte Systeme] Dokumentenbasierte System speichern die Daten
+in Dateien, meist im JSON-Format, ab. Zu dieser Gruppe gehören Systeme wie
+MongoDB oder CouchDB.
+\item[Schlüssel-Wert-Systeme] Schlüssel-Wert-Systeme speichern wie der Name schon
+sagt die Daten unter einem gewissen Schlüssel ab, über den dann später die Daten
+wieder gelesen werden. Zu dieser Gruppe gehören Systeme wie Redis, Voldemort,
+Memcached.
+\item[graphbasierte Systeme] Bei graphbasierten Systemen liegen die Daten als
+Graph vor. Solche Systeme ermöglichen es leicht herauszufinden, welcher Knoten
+mit einem anderen Knoten in Beziehung steht. Dies wird bei Sozialennetzwerken
+bezutzt um herauszufinden, wer "Freund" von jemanden ist. Zu dieser Gruppe
+gehören Systeme wie Neo4j.
+\item[spaltenorientierte Systeme] Spaltenorientiert System haben Ähnlichkeiten
+mit relationalen Systemen, die ja auch über Spalten verfügen. Allerdings kann man
+bei einem spaltenorientierten System eine Liste von Schlüssel-Wert-Paaren
+abspeichern und im Extremfall kann sogar die Spalte eine Liste von
+Schlüssel-Wert-Paaren sein. Zu dieser Gruppe gehören Systeme wie HBase, Cassandra.
+\end{description}
+\item Soft-NoSql-Systeme
+\begin{description}
+\item[XML-Datenbanken]
+\item[Objekt-Datenbanken]
+\end{description}
+\end{itemize}
+
+.
