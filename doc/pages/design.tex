@@ -104,3 +104,30 @@ dass die fehlenden Methoden vom Werkzeug mit abgedeckt werden sollen, wie
 \enquote{delete}, \enquote{incr/decr},~\dots{] . Diese Anforderung ist einfach
 umzusetzen, da man auf die vorhandenen Tests zugreifen und diese ggf. anpassen
 kann.
+
+\section{Analysephase des Anwendungsfalls}
+Die jeweiligen NoSql-Systeme sind alleine noch nicht sehr sinnvoll, sondern erst
+in Zusammenarbeit mit einer Anwendung. Der Ablauf ist dabei immer gleich. Zuerst
+wird eine Verbindung zum NoSql-System aufgebaut. Anschließend werden Daten
+zwischen beiden Systemen übertragen. Abschließend wird die Verbindung wieder
+abgebaut. Um nicht für jede neue Anwendung diesen Prozess neu implementieren zu
+müssen, greift man auf Bibliotheken zu, welche diesen Prozess implementieren.
+
+Für alle gängigen NoSql-Systeme und Programmiersprachen gibt es heutzutage eine
+entsprechende Bibliothek oder auch mehrere, von denen meistens eine vom
+Hersteller bevorzugt wird. Da der Anwendungsfall in der Programmiersprache
+Python umgesetzt werden soll, kommen auch nur die Bibliothek für Python in
+Frage. Dabei unterscheidet man zwischen Bibliotheken, welche rein in Python
+umgesetzt sind und solchen die nur als Wrapper für die jeweiligen C Bibliotheken
+dienen. Das NoSql-System Voldemort hat nur eine Python-Bibliothek, welche von
+den Entwicklern bereitgestellt wird. Für Redis sind mehrere Bibliotheken
+verfügbar, jedoch wird von den Herstellern die Bibliothek
+redis-py\footnote{\url{http://www.github.com/andymccurdy/redis-py}} bevorzugt.
+Bei Memcached gibt es mehrere Bibliotheken, welche frei wählbar sind.
+
+\subsection{Beschreibung des Anwendungsfalls}
+Als Anwendungsfall soll ein Abstimmungssystem entwickelt werden. Dabei geben
+die Benutzer Bewertungen für die jeweiligen Sachen ab und ein Algorithmus
+erstellt daraus eine neue Liste. Der Administrator kann neue Gegenstände ins
+System einstellen. Sowohl der Administrator als auch die Benutzer können sich
+jederzeit die neuste Liste ansehen.
