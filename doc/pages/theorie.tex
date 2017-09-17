@@ -3,7 +3,7 @@ In diesem Kapitel werden die für die Realisierung benötigten Technologien und
 Methoden beschrieben.
 
 Dazu wird zuerst erklärt, was man unter NoSql versteht und eine kurze Zeitlinie
-der Entwicklung. Anschliend werden die verschiedenen Arten von NoSql und
+der Entwicklung. Anschließend werden die verschiedenen Arten von NoSql und
 speziell von Schlüssel-Wert-Systemen beschrieben.
 
 Danach folgt der Vergleich von Redis, Memcached und Voldemort. Dazu werden
@@ -16,18 +16,17 @@ NoSql-Systeme sind keine neue Erfindung, sondern entwickelten sich quasi
 parallel mit den relationalen Systemen. Der Grund warum erst jetzt NoSql einen
 so großen Durchbruch erfährt, hängt vor allem mit dem BigData-Gedanken zusammen.
 Vor BigData war es üblich die Geschäftsdaten auf wenigen Datenbank-Server zu
-speichern. Mit der Entwicklung der Sozialen-Netzwerke und der zuhnemenden
+speichern. Mit der Entwicklung der Sozialen-Netzwerke und der zunehmenden
 Vernetzung von Alltagsgegenständen stieg die erzeugte Datenmenge rapide auf
-Peta-, Exa-Byte Bereich an. Dies hatte zur Folge, dass sich die Geschäftdaten
-mit herkörmlichen Mitteln nicht mehr effektiv Speichern und verarbeiten liesen
+Peta-, Exa-Byte Bereich an. Dies hatte zur Folge, dass sich die Geschäftsdaten
+mit herkömmlichen Mitteln nicht mehr effektiv Speichern und verarbeiten ließen
 und man nach Alternativen gesucht hat, den NoSql-Systemen.
-Obwohl der NoSql Begriff heute so eine Aktualität besitzt, gibt es keine bis
-heute keine einheitliche Begriffsdefinition. Vielmehr ist NoSql ähnlich wie
-\gls{AJAX} ein Sammelbegriff für verschiedene Technologien und Ideen. Während
-früher NoSql wörtlich für „no Sql“ also "kein Sql" stand steht es heute eher für
-„not only Sql“ also "nicht nur Sql". Auch ab wann man ein System als
-NoSql-System zählt, ist nicht klar geregelt. Vielmehr gibt es eine Reihe von
-Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
+Obwohl der NoSql Begriff heute so eine Aktualität besitzt, gibt es keine einheitliche
+Begriffsdefinition. Vielmehr ist NoSql ähnlich wie \gls{AJAX} ein Sammelbegriff für
+verschiedene Technologien und Ideen. Während früher NoSql wörtlich für „no Sql“
+also "kein Sql" stand steht es heute eher für „not only Sql“ also "nicht nur Sql".
+Auch ab wann man ein System als NoSql-System zählt, ist nicht klar geregelt.
+Vielmehr gibt es eine Reihe von Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
 
 \begin{itemize}
 \item Das zugrundeliegende Datenmodell ist nicht relational.
@@ -48,23 +47,23 @@ Eventuelly Consistenz und BASE aber nicht ACID.
 Der Ursprung von NoSql ist die im Jahr 1979 von Ken Thompson entwickelte
 Datenbank DBM\footnote{\url{http://www.gnu.org/software/gdbm/gdbm.html}}, die
 bis heute noch von Linux verwendet wird. Die ersten NoSql Datenbanken, die
-heute noch existieren entsanden in den 80er-Jahren, wie Lotus Note\footnote{\url{http://www-03.ibm.com/software/products/de/ibmdomino}},
+heute noch existieren entstanden in den 80er-Jahren, wie Lotus Note\footnote{\url{http://www-03.ibm.com/software/products/de/ibmdomino}},
 BerkleyDB\footnote{\url{http://www.oracle.com/us/products/database/berkeley-db/index.html}},
 GT.M\footnote{\url{https://sourceforge.net/projects/fis-gtm/https://sourceforge.net/projects/fis-gtm/}}, \ldots .
 Der Begriff NoSql wurde das erste Mal 1998 von Carlo Strozzi benutzt, der eine
 relationale Datenbank entwickelt hatte jedoch ohne Sql. Der richtige Durchbruch
 kam allerdings erst im Jahr 2000 mit dem Web 2.0 und den daraus resultierenden
 Anstieg des Datenvolumens. Dieser Datenanstieg erforderte neue Methoden zur
-effizenteren Speicherung und Verarbeitung. Google war dabei der Vorreiter mit
+effizienteren Speicherung und Verarbeitung. Google war dabei der Vorreiter mit
 seinem Map-/Reduce-Ansatz. Die Idee dabei ist es, eine große Datenmenge in
 kleinere Pakete aufzuteilen und diese dann unabhängig voneinander zu verarbeiten.
 Anschließend werden die einzelnen Zwischenergebnisse gesammelt und zu einen
-Gesammtergebnis zusammengefasst. Diese Idee ließ sich sehr gut mit den Ideen
+Gesamtergebnis zusammengefasst. Diese Idee ließ sich sehr gut mit den Ideen
 der funktionalen Programmiersprachen umsetzen, denn dort wird auf einer Kopie
 der tatsächlichen Daten gearbeitet. Später zogen die anderen großen Firmen mit
 eigenen Lösungen nach und heute kann man sagen, dass es den Map-/Reduce-Ansatz
 nicht mehr gibt, sondern verschiedene Implementierungen, die für einen gewissen
-Einsatzzweck entwickelt wurden. Die Entwicklung der mordernen NoSql-Systemen
+Einsatzzweck entwickelt wurden. Die Entwicklung der modernen NoSql-Systemen
 begann im Jahr 2005 mit Systemen wie Neo4j, Redis, Cassandra, \ldots und hält
 bis heute noch an.
 
@@ -73,11 +72,11 @@ Wie oben schon beschrieben existieren eine Vielzahl an unterschiedlichsten
 NoSql-Systemen. Dies hat zur Folge, dass es nicht leicht ist das für seinen
 Anwendungsfall passende System zu finden. Deshalb kam der Gedanke NoSql-Systeme
 nach bestimmten Kriterien zu sortieren um eine bessere Entscheidung treffen zu
-können. Schnell entwickelten sich mehrere Kriterien. Die gröbste Einteillung,
-die man vorgenommen hat, war die Einteillung in Kern-NoSql-Systeme und
+können. Schnell entwickelten sich mehrere Kriterien. Die gröbste Einteilung,
+die man vorgenommen hat, war die Einteilung in Kern-NoSql-Systeme und
 Soft-NoSql-Systemen. Wobei die Grenze und der Unterschied zwischen den Gruppen
 nicht klar geregelt ist. Danach werden NoSql-Systeme häufig nach ihrem
-zugrundeliegenden Datenmodell eingeteilt. Nachfolgend folgt eine Einteilung der
+zugrundeliegenden Datenmodell eingeteilt. Nachfolgend eine Einteilung der
 NoSql-Systeme nach dem Datenmodell mit einer Erklärung was man sich unter dem
 jeweiligen Typ vorzustellen hat und einige Vertreter davon:
 
