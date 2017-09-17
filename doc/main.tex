@@ -18,6 +18,7 @@
 \usepackage{graphicx, grffile}
 \usepackage[unicode=true]{hyperref}
 \usepackage[acronym, toc]{glossaries}
+\include{ext/glossaries}
 \setlength{\parskip}{\medskipamount}
 \begin{document}
 \author{Mirko Lelansky}
@@ -30,10 +31,14 @@
 \clearpage
 \tableofcontents
 \clearpage
+\printglossary[type=acronym, title=Abkürzungsverzeichnis, toctitle=Abkürzungsverzeichnis]
 \include{pages/introduction}
 \include{pages/theorie}
 \include{pages/design}
 \include{pages/implementation}
 \include{pages/conclusion}
+\printglossary
+\listoffigures
+\lstlistoflistings
 \printbibliography
 \end{document}
