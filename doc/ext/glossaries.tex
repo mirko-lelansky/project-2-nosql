@@ -2,3 +2,18 @@
 \newacronym{API}{API}{Application Programming Interface}
 \newacronym{JSON}{JSON}{JavaScript Object Notation}
 \newacronym{ORM}{ORM}{Objekt-Relationalen-Mapper}
+\newglossaryentry{ACID}{name={Atomicity, Consistency, Integrity and Durability},
+description={ACID steht für Atomarität, Konsistenz, Integrität und
+Widerstandsfähigkeit. Alle diese Begriffe stehen im Zusammenhang mit Konsistenz
+der Daten einer relationalen Datenbank. Bei ACID muss nach einer Transaktion auf
+allen Knoten der selbe Zustand sein.}}
+\newglossaryentry{BASE}{name={Basically Available, Soft State,
+Eventually Consistent}, description={BASE ist der Gegenpart zu \gls{ACID} für
+NoSql-Systeme. Bei BASE geht es darum die Konsistenz der Verfügbarkeit
+unterzuordnen. Im Gegensatz zu ACID muss bei BASE irgendwann der selbe Zustand
+sein. Der genau Zeitpunkt ist jedoch nicht definiert.}}
+\newglossaryentry{CAP}{name={Consistency, Availability, Partition Tolerance},
+description={CAP steht für Konsistenz, Verfügbarkeit und Ausfalltoleranz und ist
+eine Theorem von Eric Brewer. Das Theorem sagt aus, dass man lediglich zwei der
+drei Eigenschaften gleichzeitig einhalten kann, die dritte wird man nie
+einhalten können. \cite{Brewer2000}}}
