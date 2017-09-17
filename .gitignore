@@ -9,7 +9,9 @@
 *.blg
 *.fdb_latexmk
 *.fls
+*.lof
 *.log
+*.lol
 *.out
 *.run.xml
 *.toc
