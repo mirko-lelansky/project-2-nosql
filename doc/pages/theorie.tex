@@ -114,3 +114,50 @@ sparen.
 \end{itemize}
 
 . Im weiteren Verlauf werden wir nur noch Schlüssel-Wert-Systeme betrachten.
+
+\section{Schlüssel-Wert-Systeme}
+Schlüssel-Wert-Systeme sind Systeme, die wie der Name schon sagt, einen Wert,
+also die Daten unter einem bestimmten Schlüssel ablegen. Der Zugriff auf den
+abgelegten Wert erfolgt anschließend ebenfalls über den Schlüssel. Die Schlüssel
+und die Werte können dabei ganz verschiedene Formen aufweisen. Die Schlüssel
+sind im einfachsten Fall einfache Zeichenketten mit einer spezifischen Länge.
+Andere Systeme lassen erst einmal oder mehrmals einen Hash-Algorithmus über den
+Daten laufen und nehmen die erzeugte Hash-Summe als Schlüssel. Auch die Werte
+sind im einfachsten Fall einfache Zeichenketten, jedoch können manche Systeme
+auch komplexere Datenstrukturen wie Listen, Mengen, Wörterbücher, \ldots
+speichern. Wenn man die Geschwindigkeit der Operationen betrachtet, dann stellt
+man fest, dass die Lese-Operation schnell ist, vorausgesetzt man kennt den
+Schlüssel und die Schreib-Operation langsam. Die Schlüssel-Wert-Systeme lassen
+sich nochmals in verschiedene Gruppen einteilen, wobei jede Gruppe eine
+Eigenschaft fokussiert.
+
+\subsubsection{Arten von Schlüssel-Wert-Systemen}
+Schlüssel-Wert-Systeme lassen sich in Gruppen einteilen. Dabei hat jede Gruppen
+eine spezifische Eigenschaft. Diese Einteilung ist aber keineswegs fest, sondern
+ein System kann durchaus auch mehreren Gruppen angehören, je nachdem wie seine
+aktuelle Konfiguration ist. Die folgende Liste spezifieziert die möglichen
+Gruppen:
+
+\begin{description}
+\item[Caches] \gls{RAM}-basierte Systeme oder Caches halten ihre gesamten Daten
+im \gls{RAM} vor. Deshalb werden sie oft als Zwischenspeicher benutzt. Dies hat
+zur Folge, falls ein Server ausfällt sind die Daten entgültig weg. Ein beliebter
+Anwendungsfall ist es solch ein System zwischen der Anwendung und dem
+Datenbankserver zu schalten und die Ergebnisse der Datenbankanfragen für spätere
+Zugriffe zwischen zuspeichern. Zu dieser Gruppe gehören Systeme wie Memcached.
+\item[Festplatten-Systeme] Festplatten-Systeme arbeiten im Prinzip wie Caches
+nur mit der Einschränkung, dass sie ihre Daten nicht im \gls{RAM} halten
+sondern auf der Festplatte. Außerdem legen solche Systeme oft
+Wiederherstellungsdateien an. Damit sind solche Systeme gut gegen Ausfälle
+geschützt. Zu dieser Gruppe gehören Systeme wie Redis.
+\item[Sortierte Schlüssel-Wert-Systeme] Sortierte Schlüssel-Wert-System verfügen
+über Ordnungs- und Sortierfunktionen auf den Schlüsseln. Außerdem gibt es System
+die die Schlüssel in einer Extra Index-Tabelle speichern. Zu dieser Gruppe
+gehören Systeme wie BerkleyDB.
+\item[Eventual Consistence-Systeme] Solche Systeme stellen sicher, dass das
+System nach einer gewissen Dauer wieder in einem konsistenten Zustand ist.
+Zu dieser Gruppe gehören Systeme wie Voldemort.
+\end{description}
+
+. Nachfolgend folgt der allgemeine Überblick über die drei ausgewählten Systeme
+Memcached, Redis und Voldemort.
