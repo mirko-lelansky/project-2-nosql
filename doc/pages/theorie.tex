@@ -187,17 +187,17 @@ die drei ausgewählten Systeme Memcached, Redis und Voldemort.
 
 \subsection{Memcached}
 Memcached ist ein NoSql-System und gehört in die Gruppe der
-Schlüssel-Wert-Systeme und in die Untergruppe der Caches 
+Schlüssel-Wert-Systeme und in die Untergruppe der Caches.
 
 \foreignblockquote{english}[\cite{Memcached2015}]{Free \& open source,
 high-performance, distributed memory object caching system [\ldots]}
 
-. Memcached wurde im Jahr 2003 von Brad Fitzpatrick bei der Firma Danga
+Memcached wurde im Jahr 2003 von Brad Fitzpatrick bei der Firma Danga
 Interactive heute Say Media für die Webseite LiveJournal entwickelt. Die
 aktuelle Version ist die Version 1.5.0. Die ersten Versionen von Memcached
 waren in Perl geschrieben. Später wurde der Memcached in C neugeschrieben. Der
 Vorteil von Memcached liegt in der Beschleunigung von Webseiten in dem es
-Datenbank-, Webservice- und Templateergenbisse zwischenspeichert 
+Datenbank-, Webservice- und Templateergenbisse zwischenspeichert.
 
 \foreignblockquote{english}[\cite{Memcached2015}]{[\dots{}] but intended for
 use in speeding up dynamic web applications by alleviating database load.
@@ -205,7 +205,7 @@ Memcached is an in-memory key-value store for small chunks of arbitrary
 data (strings, objects) from results of database calls, API calls, or page
 rendering.}
 
-. Zunächst läuft auf dem Server bzw. den Servern ein oder mehrere Dienste. Der
+Zunächst läuft auf dem Server bzw. den Servern ein oder mehrere Dienste. Der
 Zugriff erfolgt dann über eine Bibliothek für die jeweilige Programmiersprache.
 Die Abbildung \ref{fig:memcached-architecture} zeigt die eben beschriebene
 Architektur.
@@ -223,7 +223,6 @@ Funktion eine Zahl, den so genannten Hashwert. Diese Nummer sagt der Bibliothek,
 an welchen Memcached-Daemon sie sich wenden muss. Nachdem dieser alle Daten
 erhalten hat, errechnet er mit einer eigenen Hashfunktion die Speicherstelle,
 unter der er die Daten schließlich einlagert.}
-.
 
 \begin{figure}
 \centering
@@ -258,13 +257,13 @@ laufen. Der wichtigste Unterschied zwischen Redis und Memcached sind die
 erlaubten Schlüssel und Werte. Wie schon oben erwähnt sind Schlüssel in Memcached
 immer Zeichenketten mit einer maximalen Länge von 250 Zeichen. Im Gegensatz dazu
 existiert diese Einschränkung bei Redis nicht. Dort ist es ohne Probleme möglich
-auch ein Bild als Schlüssel zu verwenden
+auch ein Bild als Schlüssel zu verwenden.
 
 \foreignblockquote{english}[\cite{Redis2010}]{Redis keys are binary safe, this
 means that you can use any binary sequence as a key, from a string like ‚foo‘
 to the content of a JPEG file. The empty string is also a valid key. [\dots]}
 
-. Der Schlüssel wie auch die Werte dürfen lediglich die 512 MB Grenze nicht
+Der Schlüssel wie auch die Werte dürfen lediglich die 512 MB Grenze nicht
 überschreiten. Bei den zulässigen Werten unterscheidet sich Redis stark von den
 anderen Systemen. Während Memcached nur Zeichenketten oder serialisierte Objekte
 speichern kann ist Redis in der Lage mit Listen, Mengen und Wörterbüchern direkt
@@ -285,3 +284,88 @@ oder mehrere Dienste gleichzeitig laufen. Voldemort macht bei der Wahl der
 Schlüssel und Werte keine Einschränkung. Es muss lediglich eine Klasse
 geschrieben werden, die Schlüssel und die Werte serialisieren und
 de-serialisieren kann.
+
+\section{Verteiltes System/Cluster-Bildung}
+NoSql-Systeme sind wie oben schon erwähnt dafür ausgelegt horizontal zu
+skalieren. Dort werden also eher zusätzliche Server mit weniger Ressourcen
+angeschafft, als bestehende Server zu erweitern, um eine gemeinsame Aufgabe zu
+erfüllen. Solche Systeme werde auch verteilte Systeme oder Cluster genannt.
+
+\blockquote[\cite{Distener2012}]{Ein verteiltes System besteht aus unabhängigen,
+über ein Rechnernetz kommunizierenden Rechnern, wobei keine zentrale
+Systemsteuerung existiert und der Verteilungsaspekt für alle Benutzer des
+Systems möglichst transparent ist.}
+
+Wobei der Unterschied zwischen einem verteilten System und einem Cluster
+nicht klar definiert ist.
+
+Verteilte System lassen sich in zwei Kommunikationsmodelle einteilen
+Client-Server und Peer-To-Peer. Bei Client-Server stellen ein oder mehrere
+Server einen Dienst bereit und die Clients wollen diesen Dienst nutzen. Dabei
+haben, die einzelnen Server keine Information über die anderen Server. Eine
+Sonderform von Client-Server ist das Master-Slave-Prinzip. Master-Slave ist ein
+Zusammenschluss von mindestens zwei Rechnern. Ein Rechner ist dabei der Master
+und übernimmt alle Anfragen der Clients entgegen und verteilt diese an seine
+Slaves. Somit sind die Master nach außen hin Server und nach innen auch Clients
+und die Slaves sind nur Server.
+
+Im Gegensatz dazu ist bei Peer-To-Peer die Aufteilung in Client und Server
+nicht klar, den ein einzelner Rechner kann sowohl Client als auch Server sein.
+Des Weiteren haben die einzelnen Rechner Informationen über die anderen Rechner.
+Werden mehrere Master-Slave-Systeme zu einem Peer-To-Peer kombiniert entsteht
+ein Master-Master-Netz. Die Clients senden ihre Anfrage an einen beliebigen
+Master, der die Anfrage entweder selbst beantwortet oder diese weiterleitet.
+
+\subsection{Memcached}
+Memcached ist ein klassisches Client-Server-System. Die Anwendungen, welche über
+eine Bibliothek auf einen Memcached-Dienst zugreifen sind die Clients und die
+Memcached-Dienste sind die Server. Die verschiedenen Memcached-Dienste haben
+dabei keine Information über andere Dienste, sondern nur die Bibliothek hat
+diese Information
+
+\foreignblockquote{english}[\cite{Memcached2015}]{The servers understand how
+store and fetch items. They also manage when to evict or reuse memory. Servers
+are Disconnected From Each Other Memcached servers are unaware of each other.
+There is no crosstalk, no syncronization, no broadcasting, no replication.}
+
+Falls man doch Replikation und andere Funktionen benötigt muss dies die
+Bibliothek leisten oder andere Bibliothek.
+
+\subsection{Redis}
+Redis ist wie Memcached ein klassisches Client-Server-System. Die Anwendungen,
+welche über eine Bibliothek auf den Redis-Dienst zugreifen sind die Clients und
+die Redis-Dienste sind die Server. Redis lässt sich nun je nach Anforderung
+konfigurieren. Im einfachsten Fall haben die verschieden Redis-Server keine
+Informationen über die anderen Server. Hier muss wie bei Memcached die
+Bibliothek die zusätzliche Funktionalität bereitstellen, wie die Verbindung zu
+mehrere Redis-Diensten.
+
+Eine etwas verbesserte Konfiguration ist mehrere Server im Master-Slave-Modus
+zu betreiben. Dadurch ist sichergestellt, dass sowohl Master als auch die
+Slaves, die gleichen Daten haben, und eine Datenwiederherstellung möglich ist.
+Jedoch muss die Bibliothek immer noch den Verbindungsaufbau übernehmen und auch
+solche Sachen wie, dass nur auf dem Master geschrieben und von den Slaves nur
+gelesen werden darf. Dies war bis Redis 3.0 die Standardkonfiguration.
+
+Ab Redis 3.0 ist es möglich einen echten Cluster mit Master-Master-Replikation
+zu betreiben. Für solch eine Konfiguration werden laut der offiziellen
+Dokumentation 6-Server benötigt 3-Master mit jeweils 1-Slave.
+
+\foreignblockquote{english}[\cite{Redis2010}]{Note that the minimal cluster
+that works as expected requires to contain at least three master nodes. For your
+first tests it is strongly suggested to start a six nodes cluster with three
+masters and three slaves.}
+
+\subsection{Voldemort}
+Voldemort ist im Gegensatz zu den beiden anderen Systemen ein
+Peer-To-Peer-Netzwerk. Alle beteiligten Server haben die Information, welche
+anderen Server noch Teil des Clusters sind. Im Gegensatz zu Memcached und Redis
+sind bei Voldemort die Server in der Lage, die Daten automatisch zu
+partitionieren und zu replizieren. Dadurch ist es möglich dynamisch auf geplante
+und ungeplante Ausfälle zu reagieren. Dabei ist der Punkt zu beachten, dass
+dies nur für den Initialen-Cluster funktioniert. Wenn sich die Cluster-Struktur
+ändert, weil ein gänzlich neuer Server hinzugefügt wird, dann funktioniert die
+automatische Replikation und Partitionierung nicht mehr, sondern die neue
+Konfiguration muss erst auf alle Knoten neu verteilt werden. Bei Voldemort muss
+die Bibliothek auch nicht mehr alle Server kennen, sondern es reicht ein Server
+aus von dem sich die Bibliothek, dann die Cluster-Konfiguration holen kann.
