@@ -1,0 +1,3 @@
+[submodule "code/mcbenchmark"]
+	path = code/mcbenchmark
+	url = https://github.com/mirko-lelansky/mcbenchmark
