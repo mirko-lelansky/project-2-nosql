@@ -24,8 +24,8 @@ viele Maschinen zu verteilen. Zu den Anfangszeiten versuchten die relationalen
 Anbieter dies mit ihrer herkömmlichen Technologie. Allerdings scheiterten sie an
 den Anforderungen. Denn sie versuchten horizontale Skalierbarkeit, Konsistenz
 der Knoten und Daten, Datenreplikation, hohe Verfügbarkeit und schnelle
-Antwortzeiten miteinander zu kombinieren. Dies konnte jedoch nicht aufgrund der
-Architektur der relationalen Systeme funktionieren. Deshalb wurde nach
+Antwortzeiten miteinander zu kombinieren. Dies konnte jedoch aufgrund der
+Architektur der relationalen Systeme nicht funktionieren. Deshalb wurde nach
 Alternativen gesucht, den NoSql-Systemen.
 
 Was sind nun konkret NoSql-System und was bedeutet NoSql eigentlich? Obwohl der
@@ -272,18 +272,29 @@ umzugehen.
 \subsection{Voldemort}
 Voldemort ist ein Schlüssel-Wert-System und gehört in die Untergruppe der
 Eventuell-Consistence-Systeme und ist eine OpenSource Implementierung von
-Amazons DynamoDB. Voldemort wurde im Jahr 2009 von Jay Kreps und Bhupesh Bansal
-bei LinkedIn entwickelt. Die aktuelle Version ist 1.10.24. Voldemort ist komplett
-in Java geschrieben. Der große Vorteil von Voldemort liegt in der Verfügbarkeit.
-Die Idee dabei ist, falls ein Server nicht verfügbar ist und man deswegen nicht
-auf die Daten zugreifen kann, dass man dann nicht alle Server nach den Daten
-durchsucht, sondern nur die nächsten. Dafür werden die Server gedanklich zu
-einem Ring zusammengefügt. Der Zugriff erfolgt wie bei den anderen Systemen
-über eine Bibliothek. Ähnlich wie bei Memcached kann auch bei Voldemort ein
-oder mehrere Dienste gleichzeitig laufen. Voldemort macht bei der Wahl der
-Schlüssel und Werte keine Einschränkung. Es muss lediglich eine Klasse
-geschrieben werden, die Schlüssel und die Werte serialisieren und
-de-serialisieren kann.
+Amazons DynamoDB \cite{DeCandia2007}. Voldemort wurde im Jahr 2009 von Jay Kreps
+und Bhupesh Bansal bei LinkedIn entwickelt. Die aktuelle Version ist 1.10.24.
+Voldemort ist komplett in Java geschrieben. Der große Vorteil von Voldemort
+liegt in der Verfügbarkeit. Die Idee dabei ist, falls ein Server nicht verfügbar
+ist und man deswegen nicht auf die Daten zugreifen kann, dass man dann nicht
+alle Server nach den Daten durchsucht, sondern nur die nächsten. Dafür werden die
+Server gedanklich zu einem Ring zusammengefügt. Der Zugriff erfolgt wie bei den
+anderen Systemen über eine Bibliothek. Die Abbildung \ref{fig:voldemort-logical-architecture}
+zeigt exemplarisch die Verbindung eines Voldemort-Clients mit einem
+Voldemort-Server. Die oberen drei Schichten stellen die Bibliothek dar, welche
+von den Anwendungen benutzt wird. Die letzte Schicht stellt das eigentliche
+Speichermedium dar. Die übrigen zwei Schichten stellen einen Voldemort-Server
+dar. Ähnlich wie bei Memcached kann auch bei Voldemort ein oder mehrere Dienste
+gleichzeitig laufen. Voldemort macht bei der Wahl der Schlüssel und Werte keine
+Einschränkung. Es muss lediglich eine Klasse geschrieben werden, die Schlüssel
+und die Werte serialisieren und de-serialisieren kann.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{images/voldemort-architecture.jpeg}
+    \caption{Logische Architektur eines Voldemort-Clients mit einem Voldemort-Server \cite{Voldemort2017}}
+    \label{fig:voldemort-logical-architecture}
+\end{figure}
 
 \section{Verteiltes System/Cluster-Bildung}
 NoSql-Systeme sind wie oben schon erwähnt dafür ausgelegt horizontal zu
@@ -369,3 +380,81 @@ automatische Replikation und Partitionierung nicht mehr, sondern die neue
 Konfiguration muss erst auf alle Knoten neu verteilt werden. Bei Voldemort muss
 die Bibliothek auch nicht mehr alle Server kennen, sondern es reicht ein Server
 aus von dem sich die Bibliothek, dann die Cluster-Konfiguration holen kann.
+
+\section{Persistenz}
+Persistenz ist die Eigenschaft Objekte, Daten, logische Verbindungen,~\dots{}
+über die Laufzeit der Anwendung hinaus verfügbar zu machen. Dies ist gerade
+wichtig, falls es zu einem geplanten oder ungeplanten Ausfall kommt, um die
+Daten wiederherzustellen.
+
+Bei einem einzelnen Server ist dies einfach, entweder das System unterstützt
+Persistenz oder eben nicht. Sobald aber mehr als ein Server im Einsatz sind wie
+bei NoSql-Systemen, wo Server dynamisch hinzugefügt oder entfernt werden können,
+spielt die Architektur des Systems eine Rolle. Denn dort kann entweder keine
+Persistenz sein, ein einzelner Server sichert die Daten, einige Server sichern
+ihre Daten oder alle Server sichern ihre Daten.
+
+Eng mit dem Begriff der Persistenz verknüpft ist die Konsistenz. Gerade wenn
+ein Server einen anderen über neue Änderungen informiert, kann es zu
+Inkonsistenzen kommen.
+
+\subsection{Memcached}
+Memcached stellt selbst keine Persistenz zur Verfügung. Wenn ein oder mehrere
+Server geplant oder ungeplant ausfallen, dann sind die Daten, die aktuell im
+\gls{RAM} waren verloren. Die Daten lassen sich auch nicht von anderen Server
+holen, da immer nur ein Server die speziellen Daten speichert und wie oben
+erwähnt auch keine Kommunikation zwischen den einzelnen Memcached-Diensten
+existiert.
+
+\subsection{Redis}
+Redis kann mit Persistenz oder ohne betrieben werden. Wenn man Redis ohne
+Persistenz betreibt, hat man ein besseres Memcached-System.
+
+\foreignblockquote{english}[\cite{Redis2010}]{If you wish, you can
+disable persistence at all, if you want your data to just exist as long as the
+server is running.}
+
+Standardmäßig wird Redis immer mit Persistenz betrieben. Redis bietet dabei
+zwei Persistenzmethoden an, welche auch zusammen benutzt werden können. Diese
+beiden Methoden sind \gls{RDB} und \gls{AOF}.
+
+\foreignblockquote{english}[\cite{Redis2010}]{It is possible to combine both
+AOF and RDB in the same instance. Notice that, in this case, when Redis
+restarts the AOF file will be used to reconstruct the original dataset since it
+is guaranteed to be the most complete.}
+
+Bei \gls{RDB} werden die Daten aus dem \gls{RAM} in regelmäßigen Abständen ein
+Zwischenstand auf die Festplatte geschrieben.
+
+\foreignblockquote{english}[\cite{Redis2010}]{The RDB persistence performs
+point-in-time snapshots of your dataset at specified intervals.}
+
+Im Gegenzug wird bei \gls{AOF} jede Änderung in einer Datei angehängt und ein
+separater Thread liest die Datei ein und schreibt die Änderungen auf die
+Festplatte.
+
+\foreignblockquote{english}[\cite{Redis2010}]{The AOF persistence logs every
+write operation received by the server, that will be played again at server
+startup, reconstructing the original dataset. Commands are logged using the same
+format as the Redis protocol itself, in an append-only fashion.}
+
+\subsection{Voldemort}
+Voldemort kann nur mit Persistenz betrieben werden. Während bei Redis die Daten
+in eine Datei geschrieben werden, verfügt Voldemort über eine Persistenz-Sicht,
+die sich mit unterschiedlichen Speicher-Modellen betreiben lässt. Standardmäßig
+speichert Voldemort seine Daten in eine Berkley Datenbank. Alternative lässt
+sich die BerkleyDB auch durch MySql/MariaDB ersetzen. Zum testen ist es auch
+möglich, die Daten lediglich im \gls{RAM} wie bei Memcached zu speichern oder
+die Implementierung von Voldemort zu benutzen. Falls man mit den vorhanden
+Modellen nicht zufrieden ist, kann man auch eine eigene Lösung implementieren.
+
+\foreignblockquote{english}[\cite{Voldemort2017}]{We support a simple api for
+persistence and use BDB Java edition as the default. Other storage engines
+supported are MySQL, in-memory storage ( used for unit testing ) and our own
+custom read-only storage engine ( generated offline as a batch process in
+Hadoop ). To add a new persistence implementation you need to implements put,
+get, and delete, plus provide an iterator over the values in the local store.}
+
+Bei einem Ausfall eines Servers werden zuerst die Daten aus der Persistenz
+geladen. Danach werden die aktuellsten Daten von den benachbarten Server
+kopiert.
