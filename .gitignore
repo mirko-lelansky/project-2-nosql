@@ -3,6 +3,7 @@
 # Pattern for LaTeX
 
 *.aux
+*.bak
 *.bbl
 *.bcf
 *.blg
