@@ -59,7 +59,48 @@ umgehen kann, ist
 memtier\footnote{\url{https://github.com/RedisLabs/memtier_benchmark}}.
 
 Aufgrund der wenigen Funktionalität und der nicht Benutzung von geeigneten
-Bibliotheken. Soll hier das Memcached-Werkzeug \enquote{mc-benchmark} umgeschrieben
-werden, um eine bessere Konfiguration zu ermöglichen und die fehlenden Methoden
-zu unterstützen. Dadurch ist es außerdem möglich einen besseren Bezug zum
-Benchmark-Werkzeug von Redis herzustellen.
+Bibliotheken. Soll hier das Memcached-Werkzeug \enquote{mc-benchmark}
+umgeschrieben werden, um eine bessere Konfiguration zu ermöglichen und die
+fehlenden Methoden zu unterstützen. Dadurch ist es außerdem möglich einen
+besseren Bezug zum Benchmark-Werkzeug von Redis herzustellen.
+
+\subsection{Analyse- und Desginprozess}
+Bevor überhaupt auch nur eine Zeile Code entwickelt wird, erfolgt immer eine
+Analyse- und Design-Phase. Dabei geht es darum die Anforderungen und Bedürfnisse
+der Kunden zu erfahren und festzuhalten um damit später in der Design-Phase
+bessere Entscheidungen treffen zu können. Dies ist notwendig, damit am Ende auch
+das vom Kunden gewünschte Produkt abgeliefert wird. Da dies ein komplexer
+Prozess ist, sind verschiedene Modelle und Methoden entwickelt worden, um diesen
+Prozess zu begleiten.
+
+Zum einen gibt es die schwergewichtigen Prozessmodelle wie zum Beispiel
+\enquote{Wasserfall}. Auf der anderen Seite gibt es auch leichtgewichtige
+Prozesse wie \enquote{Extrem Programming}. Daneben gibt es noch die Modelle,
+die sich genau zwischen den beiden Seiten befinden. Allerdings muss man dabei
+beachten, dass dies nur Modelle sind und keine konkreten Arbeitsweisen, sondern
+jedes Modell muss an die jeweilige Umgebung angepasst werden. Die
+schwergewichtigen Modelle legen dabei ihren Fokus auf Organisation und
+Dokumentation und die leichtgewichtig Modelle legen ihren Fokus mehr auf der
+Implementierung des Projektes. Egal für welches Modell man sich am Ende auch
+entscheidet, kann man die Anforderung des Kunden nicht mit einem oder wenigen
+Terminen vollständig erfassen, da meistens die Kunden zu Beginn des Projektes
+selbst noch keine Vorstellung von der benötigten Funktionalität haben, sondern
+diese erst entwickeln müssen. Die leichtgewichtig Modelle haben hierbei einen
+Vorteil, da sie besser mit dynamischen Änderungswünschen des Kunden umgehen
+können als die schwergewichtigen Modelle.
+
+\subsection{Anforderungen des Benchmark-Werkzeugs}
+Das umgeschriebene Programm \enquote{mc-benchmark} muss dieselbe Funktionalität
+erfüllen, wie das Original. Ein Punkt ist dabei, dass die Tests konfigurierbar
+sein müssen, um zum Beispiel die Serveradresse des Servers zu ändern, gegen den
+die Tests gefahren werden. Der andere Punkt ist, dass die beiden bisherigen
+Methoden \enquote{get} und \enquote{set} auch weiterhin unterstützt werden. Es
+kann jedoch im Laufe der Entwicklung zu Änderungen kommen, wenn man auf
+\enquote{libmemcached} statt \enquote{hiredis} benutzt wird.
+
+Allerdings gibt es noch eine Reihe zusätzlicher Anforderungen. Dazu gehört,
+dass die fehlenden Methoden vom Werkzeug mit abgedeckt werden sollen, wie
+\enquote{add}, \enquote{replace}, \enquote{append}, \enquote{prepand},
+\enquote{delete}, \enquote{incr/decr},~\dots{] . Diese Anforderung ist einfach
+umzusetzen, da man auf die vorhandenen Tests zugreifen und diese ggf. anpassen
+kann.
