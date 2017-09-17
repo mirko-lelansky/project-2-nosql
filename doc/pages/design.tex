@@ -1,0 +1,65 @@
+\chapter{Design}
+In diesem Kapitel geht es darum die einzelnen Benchmark-Werkzeuge zu
+vergleichen. Dabei werden die einzelnen Tools analysiert und die Schwachstellen
+aufgezeigt. Dazu werden für die einzelnen Schwachstellen Lösungsansätze
+präsentiert bezugnehmend auf den derzeitigen Stand der Entwicklung der
+jeweiligen Werkzeuge.
+
+Des Weiteren wird der umzusetzende Use-Case beschrieben. Dazu gehört, was der
+Use-Case zeigen soll mit einer detaillierten Architekturdarstellung zur
+Visualisierung. Dabei werden auch erste getroffene Design-Entscheidungen
+erläutert.
+
+\section{Analysephase der Benchmark-Werkzeuge}
+Wenn man eine eigene Anwendung entwickelt hat oder eine fremde Anwendung
+integrieren möchte stellt sich schnell auch die Frage, ob die Anwendung auch für
+die ursprünglich geplanten Bedürfnisse auch geeignet ist. Um diese Frage
+beantworten zu können, braucht man erst einmal eine Vorstellung, welche
+Grenzwerte, sogenannte Metriken, noch akzeptable sind. Danach kann man sich ein
+Test-Setup überlegen, wie man die ausgewählten Metriken misst. Anschließend kann
+man die gemessenen Werte mit den geplanten Werten vergleichen, ob die Anwendung
+für den geplanten Einsatzzweck geeignet ist.
+
+
+Dabei will man natürlich möglichst den Messvorgang automatisieren um ihn auch
+mit unterschiedlichsten Konfigurationen wiederholen zu können und damit die
+verschiedenen Einsatzszenarios zu testen.
+
+\subsection{Stand der Entwicklung}
+Redis hat für die Performance-Messung ein eigenes Werkzeug
+\enquote{redis-benchmark}. Dieses Werkzeug ist komplett in C geschrieben. Im
+Wesentlichen besteht das Werkzeug aus einer Event-Schleife für die Verarbeitung
+und einem Schreibprozess auf dem Socket. Dabei wurden viele alt bekannte
+Konzepte nochmals durch spezielle Wrapper gekapselt. Der Schreibprozess wurde
+ausgelagert in eine neue Bibliothek \enquote{hiredis} und wird jetzt Schritt für
+Schritt in den Werkzeugen eingesetzt. Das Werkzeug stellt für alle Methoden,
+die Redis bereitstellt einen Test zur Verfügung.
+
+Memcached hat kein eigenes Tool zur Messung der Performance. Erst mit Version
+1.2 wird ein solches Tool \enquote{memaslab} existieren. Es gibt jedoch einige
+externe Werkzeuge. Diese Werkzeuge bauen jedoch alle auf einer alten Version von
+\enquote{redis-benchmark} auf. Das bekannteste Werkzeug ist dabei
+\enquote{mc-benchmark}. Die Entwickler haben dabei mehr oder weniger alles
+unnötige gelöscht und dann das Werkzeug angepasst. Jedoch benutzt keines der
+Werkzeuge die existierende Bibliothek \enquote{libmemcached}, welche extra von
+Memcached bereitgestellt wird und zusätzliche Konfiguration Möglichkeiten für
+Memcached bietet. Des Weiteren unterstützen die Werkzeuge nicht alle Methoden,
+die Memcached bereitstellt.
+
+Voldemort hat ebenfalls wie Redis ein eigenes Performane-Werkzeug
+\enquote{voldemort-performance-tool}, welches wie der Rest von Voldemort in Java
+geschrieben ist. Das Werkzeug bietet für alle Methoden von Voldemort einen
+Test an.
+
+Außerdem gibt es noch eine Reihe anderer Werkzeuge, welche von den großen
+Firmen wie Amazon, Google, Yahoo,~\dots{} bereitgestellt werden und teilweise
+kostenpflichtig sind. Diese Werkzeuge sind dann aber auch in der Lage mehrere
+Systeme abzudecken. Ein Open-Source Tool, welches mit Redis und Memcached
+umgehen kann, ist
+memtier\footnote{\url{https://github.com/RedisLabs/memtier_benchmark}}.
+
+Aufgrund der wenigen Funktionalität und der nicht Benutzung von geeigneten
+Bibliotheken. Soll hier das Memcached-Werkzeug \enquote{mc-benchmark} umgeschrieben
+werden, um eine bessere Konfiguration zu ermöglichen und die fehlenden Methoden
+zu unterstützen. Dadurch ist es außerdem möglich einen besseren Bezug zum
+Benchmark-Werkzeug von Redis herzustellen.
