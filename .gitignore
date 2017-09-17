@@ -1,0 +1,15 @@
+# This is the exclusion file for git.
+
+# Pattern for LaTeX
+
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.toc
+main.pdf
