@@ -1,0 +1,29 @@
+sequence=0
+storeName=test
+updateTime=1501690232434
+releaseVersion=1.10.23
+clusterMetadataVersion=0
+bootstrap_urls=[tcp://localhost:6666]
+max_connections=50
+Running warmup
+[warmup]	RunTime(ms): 6420
+[warmup]	Throughput(ops/sec): 7,7882
+=== iteration = 0 ====
+[benchmark]	RunTime(ms): 12803
+[benchmark]	Throughput(ops/sec): 7,8107
+[reads]	Operations: 85
+[reads]	Average(ms): 1,2118
+[reads]	Min(ms): 0
+[reads]	Max(ms): 7
+[reads]	Median(ms): 1
+[reads]	95th(ms): 4
+[reads]	99th(ms): 7
+[reads]	Return: Ok	85
+[transactions]	Operations: 15
+[transactions]	Average(ms): 4,7333
+[transactions]	Min(ms): 1
+[transactions]	Max(ms): 10
+[transactions]	Median(ms): 4
+[transactions]	95th(ms): 10
+[transactions]	99th(ms): 10
+[transactions]	Return: Ok	15
