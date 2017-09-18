@@ -7,3 +7,6 @@
 [submodule "code/django-voldemort"]
 	path = code/django-voldemort
 	url = https://github.com/mirko-lelansky/django-voldemort
+[submodule "code/booksite"]
+	path = code/booksite
+	url = https://github.com/mirko-lelansky/booksite
