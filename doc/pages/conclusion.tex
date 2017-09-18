@@ -1,3 +1,48 @@
 \chapter{Zusammenfassung}
+In diesem Kapitel geht es darum, die Ergebnisse nochmals zusammenzufassen und
+einen Ausblick auf darauf aufbauende Möglichkeiten zu liefern.
+
 \section{Fazit}
+Die drei NoSql-Systeme wurden hinsichtlich ihrer Eigenschaften untersucht.
+Dabei wurden die jeweiligen System kurz vorgestellt und ihre wichtigsten Punkte
+erläutert. Danach wurden die ausgesuchten Eigenschaften verglichen. Dabei kam
+heraus, dass Memcached und Redis sehr ähnlich konzipierte System sind. Dies ist
+auch klar, da beide oft als Caches benutzt werden und Voldemort ist mehr wie
+ein verteielter Speicher. Da alle Systeme die zu untersuchten Eigenschaften
+unterschiedlich umgesetzt haben, ist es nicht möglich einen Favoriten zu
+bestimmen. Welches System am besten geeignet ist, hängt vom geplanten
+Einsatzzweck ab. Für Memcached wurde ein neues Performance-Tool entwickelt,
+auch wenn nicht alle geplannten Funktionen umgesetzt wurden.
+
+Der geplannte Anwendungsfall wurde trotzt der Schwierigkeiten von Voldemort
+umgesetzt und je nach Bedarf können alle drei NoSql-Systeme benutzt werden.
+Jedoch haben Memcached und Redis gegenüber Voldemort den Vorteil, dass sie schon
+eine längere Entwicklungszeit hinter sich haben und deshalb sowohl die
+NoSql-System, wie auch Bibliotheken und Tools stabiler sind. Deshablb würde
+ich nur Memcached und Redis im produktiven Einsatz empfehlen, da die Bibliothek
+bei beiden Systemen ausgereifter sind, was einen Einsatz in unterschiedlichen
+Systemen ermöglicht. Voldemort ist hier noch zu sehr auf die Java-Welt fixiert
+und ist auch nur eingeschrängt verfügbar. Während Memcached, Redis und die
+dazugehörigen Bibliotheken bei Linux über die Paketmanager verfügbar sind, bzw.
+je nach Art der Programmiersprache auf den jeweiligen Seiten veröffentlicht sind,
+ist dies bei Voldemort zum Zeitpunkt der Untersuchung nicht der Fall gewesen.
+Es gibt jedoch schon Plannungen in die Richtung. Dies würde auch eine größere
+Entwicklergemeinde erzeugen und den Unternehmen, die Möglichkeit geben über
+mögliche Einsatzszenarien nachzudenken.
+
 \section{Ausblick}
+Für die zukünftigen Schritte ergeben sich zwei Möglichkeiten. Entweder man
+entwickelt, das Benchmark-Tool für Memcached weiter oder man entwickelt ein
+ähnliches Tool für Voldemort um dann zum Beispiel den gemeinsamen Nenner aller
+drei Systeme zu vergleichen nämlich einen Text als Schlüssel und Wert zu
+verwenden, welchen man in der Länge variable hällt. Dabei müsst das Tool für
+Voldemort jedoch derzeit noch entweder in Java entwickelt werden oder über
+entsprechende Bindings, wie JDNI, Jython, JRuby,~\dots{} verfügen.
+
+Die andere Möglichkeit besteht, darin die Webseite weiter zu entwickeln und
+dann darauf gewisse Lasttests zu fahren. Dadurch könnte man feststellen, welche
+System sich im Echtzeitbetrieb besser verhalten. Dazu müsste man jedoch dann
+konsequent die Low-Level-Cache-API von Django benutzen, damit man auch die
+Funktionalität von Redis benutzen kann um Listen und Mengen zu speichern.
+Außerdem konnte man die in der Implementierung angesprochenen Probleme noch
+umsetzen, wie die nichtvorhandene Benutzerregistrierung.
