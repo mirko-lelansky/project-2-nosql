@@ -1,3 +1,6 @@
 [submodule "code/mcbenchmark"]
 	path = code/mcbenchmark
 	url = https://github.com/mirko-lelansky/mcbenchmark
+[submodule "code/voldemort-client"]
+	path = code/voldemort-client
+	url = https://github.com/mirko-lelansky/voldemort-client
