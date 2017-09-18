@@ -20,7 +20,6 @@ Test-Setup überlegen, wie man die ausgewählten Metriken misst. Anschließend k
 man die gemessenen Werte mit den geplanten Werten vergleichen, ob die Anwendung
 für den geplanten Einsatzzweck geeignet ist.
 
-
 Dabei will man natürlich möglichst den Messvorgang automatisieren um ihn auch
 mit unterschiedlichsten Konfigurationen wiederholen zu können und damit die
 verschiedenen Einsatzszenarios zu testen.
@@ -153,6 +152,28 @@ NoSql-Systemen. Django unterstützt dabei von Hause aus Memcached. Redis lässt
 sich einfach über eine Bibliothek mit anbinden. Auch unterstützt django die
 Anbindung einer Datenbank, welche jedoch der Einfachheit halber schon gefüllt
 sein kann.
+
+Die Anbindung der NoSql-Systeme für Django erfolgt dabei über die Cacheing-API.
+Dabei nutzt der jeweilige Cache die API der spezifischen Client-Bibliothek. Für
+Memcached gibt es eine Implementierung von Django welche mit den
+Client-Bibliothek
+pylibmc\footnote{\url{https://pypi.python.org/pypi/pylibmc/1.5.2}} und
+python-memcached funktioniert. Für Redis stellt ein extra Paket die
+Funktionalität bereit. Dabei ist es möglich den mitgelieferten Client zu
+benutzen oder die Bibliothek py-redis. Für Voldemort gibt es keine
+Django-Implementierung, sondern nur einen Python-Client, sodass geplant war
+diesen zu benutzen und die Django-Implementierung selbst zu entwickeln. Der
+Voldemort-Client benutzt dabei verschiedene Key-Value-Transformatoren und zur
+Kommunikation Googles-Protobuf-Protokoll. Bei ersten anfänglichen Tests erwies
+sich der Client jedoch als nicht kompatibel mit dem
+Server\footnote\url{https://github.com/voldemort/voldemort/issues/237}}.
+Dieses Problem ist auch den Entwicklern bekannt, jedoch sind dort keine
+Python-Entwickler mehr verfügbar. Nach Inspektion des Quellcodes gab es jedoch
+einen REST-Server, welcher eine REST-API bereitstellt. Somit ergab sich das
+neue Ziel, einen Voldemort-Rest-Client mit Hilfe der Python-Bibliothek
+requests\footnote{\url{https://pypi.python.org/pypi/requests/2.18.4}} zu
+entwickeln und die Django-Integration von Voldemort diesen neuen REST-Client zu
+benutzen.
 
 Das Frontend besteht dabei aus Html-Seiten für die Struktur, welche spezielle
 Makros enthalten, um die Daten aus dem Backend anzuzeigen. Das Backend ist das
