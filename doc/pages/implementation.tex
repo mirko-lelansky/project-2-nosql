@@ -148,7 +148,7 @@ auszutauschen. Die Redis-Implementierung wurde nach dem gleichen Prinzip
 übernommen.
 
 Da der Voldemort-Client nicht funktionierte, wurde wie schon beschrieben ein
-neuer REST-Client entwickelt. Der Client wird dabei mit den Rest-Endpunkten und
+neuer \gls{REST}-Client entwickelt. Der Client wird dabei mit den Rest-Endpunkten und
 den Node-Ids initialisiert. Danach kann der Anwender die Methoden frei benutzen.
 Ein Abmelden, wie bei den anderen Bibliotheken ist hierbei nicht notwendig, da
 alle Verbindungen über das HTTP-Protokoll laufen und nicht direkt über Sockets.
@@ -170,11 +170,11 @@ Trotz der erfolgreichen Anbindung von Voldemort an Django gibt es noch einige
 Probleme, bzw. offene Punkte, welche man in einem weiteren
 Implementierungsschritt umsetzen kann.
 
-Das erste Problem ist die REST-API von Voldemort, welche auch noch nicht ganz
-ausgereift ist. Dies zeigt sich zum Beispiel im Verhalten mit den Vektor-Uhren
-und Versionen. Außerdem kann es manchmal zu unkontrollierten Verhalten beim
-Speichern und Löschen kommen. Ein weiterer Punkt ist die Übergabe der
-Serverinformationen, welche sich derzeit aus URL und Node-Id für den gesamten
+Das erste Problem ist die \gls{REST}-API von Voldemort, welche auch noch nicht
+ganz ausgereift ist. Dies zeigt sich zum Beispiel im Verhalten mit den
+Vektor-Uhren und Versionen. Außerdem kann es manchmal zu unkontrollierten
+Verhalten beim  Speichern und Löschen kommen. Ein weiterer Punkt ist die Übergabe
+der Serverinformationen, welche sich derzeit aus URL und Node-Id für den gesamten
 Cluster zusammensetzt. Dies ist nicht wünschenswert, da normalerweise, der
 Standard Java-Client und auch der rudimentäre Python-Client mit einem Server
 des Clusters zufrieden sind und sich die restlichen Informationen vom Cluster
