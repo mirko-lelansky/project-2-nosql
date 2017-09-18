@@ -4,3 +4,6 @@
 [submodule "code/voldemort-client"]
 	path = code/voldemort-client
 	url = https://github.com/mirko-lelansky/voldemort-client
+[submodule "code/django-voldemort"]
+	path = code/django-voldemort
+	url = https://github.com/mirko-lelansky/django-voldemort
