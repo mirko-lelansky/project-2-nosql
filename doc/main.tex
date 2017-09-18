@@ -22,7 +22,15 @@
 \include{ext/glossaries}
 \makeglossaries
 \setlength{\parskip}{\medskipamount}
+\renewenvironment{abstract}{
+    \begin{center}
+    \normalfont\sectfont\nobreak\abstractname
+    \end{center}
+}{
+    \par
+}
 \begin{document}
+\pagenumbering{roman}
 \author{Mirko Lelansky}
 \title{Projektbericht}
 \subtitle{Vergleich von verschiedenen NoSql Schlüssel-Wert-Systemen}
@@ -30,9 +38,9 @@
 \maketitle
 \clearpage
 \include{pages/abstract}
-\clearpage
 \tableofcontents
 \clearpage
+\pagenumbering{arabic}
 \printglossary[type=acronym, title=Abkürzungsverzeichnis, toctitle=Abkürzungsverzeichnis]
 \include{pages/introduction}
 \include{pages/theorie}
