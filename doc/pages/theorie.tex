@@ -2,9 +2,10 @@
 In diesem Kapitel werden die für die Realisierung benötigten Technologien und
 Methoden beschrieben.
 
-Dazu wird zuerst erklärt, was man unter NoSql versteht und eine kurze Zeitlinie
-der Entwicklung. Anschließend werden die verschiedenen Arten von NoSql und
-speziell von Schlüssel-Wert-Systemen beschrieben.
+Zuerst wird erläutert, was man unter einem NoSql-System versteht. Anschließend
+wird die Entstehungsgeschichte der NoSql-Systeme kurz erläutert. Danach werden
+die verschiedenen Arten von NoSql und speziell von Schlüssel-Wert-Systemen
+beschrieben.
 
 Danach folgt der Vergleich von Memcached, Redis und Voldemort. Dazu werden
 zuerst die jeweiligen Systeme erläutert. Anschließend folgt der eigentliche
@@ -19,7 +20,7 @@ zusammen. Vor BigData war es üblich die Geschäftsdaten auf einem
 Datenbank-Server zu speichern und diesen vertikal zu skalieren, bis ein neuer
 Server angeschafft wurde. Mit der Entwicklung der Sozialen-Netzwerke und der
 zunehmenden Vernetzung von Alltagsgegenständen stieg die erzeugte Datenmenge
-rapide auf Peta-, Exa-Byte Bereich an. Damit war man gezwungen die Daten auf
+rapide auf Peta-, Exa-Byte Bereiche an. Damit war man gezwungen die Daten auf
 viele Maschinen zu verteilen. Zu den Anfangszeiten versuchten die relationalen
 Anbieter dies mit ihrer herkömmlichen Technologie. Allerdings scheiterten sie an
 den Anforderungen. Denn sie versuchten horizontale Skalierbarkeit, Konsistenz
@@ -28,7 +29,7 @@ Antwortzeiten miteinander zu kombinieren. Dies konnte jedoch aufgrund der
 Architektur der relationalen Systeme nicht funktionieren. Deshalb wurde nach
 Alternativen gesucht, den NoSql-Systemen.
 
-Was sind nun konkret NoSql-System und was bedeutet NoSql eigentlich? Obwohl der
+Was sind nun konkret NoSql-Systeme und was bedeutet NoSql eigentlich? Obwohl der
 NoSql Begriff heute so eine Aktualität besitzt, gibt es keine einheitliche
 Begriffsdefinition. Vielmehr ist NoSql ähnlich wie \gls{AJAX} ein Sammelbegriff
 für verschiedene Technologien und Ideen. Während früher NoSql wörtlich
@@ -39,7 +40,7 @@ Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
 
 \begin{itemize}
     \item Das zugrundeliegende Datenmodell ist nicht relational.
-    \item Die System sind von Anbeginn auf eine verteilelte und horizontale
+    \item Die Systeme sind von Anbeginn auf eine verteilelte und horizontale
         Skallierbarkeit ausgerichtet.
     \item Das NoSql-System ist Open-Source.
     \item Das System ist schemafrei oder hat nur schwache Schemarestriktionen.
@@ -50,7 +51,7 @@ Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
         Eventuelly Consistenz und \gls{BASE} aber nicht \gls{ACID}.
 \end{itemize}
 
-. Allerdings muss man bei NoSql gewisse Einschränkungen machen. NoSql-Systeme
+Allerdings muss man bei NoSql gewisse Einschränkungen machen. NoSql-Systeme
 verfügen zwar über die Eigenschaften Verfügbarkeit, Konsistenz der Knoten und
 Partitionstoleranz, jedoch können niemals alle drei Eigenschaften gleichzeitig
 erfüllt sein, sondern nur zwei. Diese Problematik ist auch unter
@@ -78,7 +79,7 @@ der funktionalen Programmiersprachen umsetzen, denn dort wird auf einer Kopie
 der tatsächlichen Daten gearbeitet. Später zogen die anderen großen Firmen mit
 eigenen Lösungen nach und heute kann man sagen, dass es den Map-/Reduce-Ansatz
 nicht mehr gibt, sondern verschiedene Implementierungen, die für einen gewissen
-Einsatzzweck entwickelt wurden. Die Entwicklung der modernen NoSql-Systemen
+Einsatzzweck entwickelt wurden. Die Entwicklung der modernen NoSql-Systeme
 begann im Jahr 2005 mit Systemen wie Neo4j\footnote{\url{http://www.neo4j.com}},
 Redis, Cassandra\footnote{\url{http://cassandra.apache.org}},~\dots{} und hält bis
 heute noch an.
@@ -109,10 +110,10 @@ jeweiligen Typ vorzustellen hat und einige Vertreter davon:
             \item[graphbasierte Systeme] Bei graphbasierten Systemen liegen die
                 Daten als Graph vor. Solche Systeme ermöglichen es leicht
                 herauszufinden, welcher Knoten mit einem anderen Knoten in
-                Beziehung steht. Dies wird bei Sozialennetzwerken bezutzt um
+                Beziehung steht. Dies wird bei Sozialen-Netzwerken bezutzt um
                 herauszufinden, wer \enquote{Freund} von jemanden ist. Zu
                 dieser Gruppe gehören Systeme wie Neo4j.
-            \item[spaltenorientierte Systeme] Spaltenorientiert System haben
+            \item[spaltenorientierte Systeme] Spaltenorientierte Systeme haben
                 Ähnlichkeiten mit relationalen Systemen, die ja auch über
                 Spalten verfügen. Allerdings kann man bei einem
                 spaltenorientierten System eine Liste von Schlüssel-Wert-Paaren
@@ -123,7 +124,7 @@ jeweiligen Typ vorzustellen hat und einige Vertreter davon:
     \item Soft-NoSql-Systeme
         \begin{description}
             \item[XML-Datenbanken] XML-Datenbanken sind spezielle
-                dokumentenbasierte Systeme bei denen statt \gls{JSON}-Dateien
+                dokumentenbasierte Systeme, bei denen statt \gls{JSON}-Dateien
                 \gls{XML}-Dateien benutzt werden.
             \item[Objekt-Datenbanken] Objekt-Datenbanken speichern
                 Objektstrukturen ab. Vorraussetzung ist allerdings, das die
@@ -136,7 +137,7 @@ jeweiligen Typ vorzustellen hat und einige Vertreter davon:
         \end{description}
 \end{itemize}
 
-. Die hier untersuchten Systeme gehören alle zu den Schlüssel-Wert-Systemen an.
+Die hier untersuchten Systeme gehören alle zu den Schlüssel-Wert-Systemen.
 
 \section{Schlüssel-Wert-Systeme}
 Schlüssel-Wert-Systeme sind Systeme, die wie der Name schon sagt, einen Wert,
@@ -162,7 +163,7 @@ Gruppen:
     \item[Caches] \gls{RAM}-basierte Systeme oder Caches halten ihre gesamten
         Daten im \gls{RAM} vor. Deshalb werden sie oft als Zwischenspeicher
         benutzt. Dies hat zur Folge, falls ein Server ausfällt sind die Daten
-        entgültig weg. Ein beliebter Anwendungsfall ist es solch ein System
+        entgültig weg. Ein beliebter Anwendungsfall ist es, solch ein System
         zwischen der Anwendung und dem Datenbankserver zu schalten und die
         Ergebnisse der Datenbankanfragen für spätere Zugriffe zwischen
         zuspeichern. Zu dieser Gruppe gehören Systeme wie Memcached.
@@ -180,7 +181,7 @@ Gruppen:
         ist. Zu dieser Gruppe gehören Systeme wie Voldemort.
 \end{description}
 
-. Das erste zu untersuchende System Memcached ist ein reines Cache-System.
+Das erste zu untersuchende System Memcached ist ein reines Cache-System.
 Redis ist ein Mischsystem aus Cache und Festplatten-System und Voldemort ist
 ein Eventual-Consistence-System. Nachfolgend folgt der allgemeine Überblick über
 die drei ausgewählten Systeme Memcached, Redis und Voldemort.
@@ -189,17 +190,17 @@ die drei ausgewählten Systeme Memcached, Redis und Voldemort.
 Memcached ist ein NoSql-System und gehört in die Gruppe der
 Schlüssel-Wert-Systeme und in die Untergruppe der Caches.
 
-\foreignblockquote{english}[\cite{Memcached2015}]{Free \& open source,
+\foreignblockquote{english}[\cite{Memcached2017}]{Free \& open source,
 high-performance, distributed memory object caching system [\ldots]}
 
 Memcached wurde im Jahr 2003 von Brad Fitzpatrick bei der Firma Danga
 Interactive heute Say Media für die Webseite LiveJournal entwickelt. Die
 aktuelle Version ist die Version 1.5.0. Die ersten Versionen von Memcached
-waren in Perl geschrieben. Später wurde der Memcached in C neugeschrieben. Der
+waren in Perl geschrieben. Später wurde Memcached in C neugeschrieben. Der
 Vorteil von Memcached liegt in der Beschleunigung von Webseiten in dem es
 Datenbank-, Webservice- und Templateergenbisse zwischenspeichert.
 
-\foreignblockquote{english}[\cite{Memcached2015}]{[\dots{}] but intended for
+\foreignblockquote{english}[\cite{Memcached2017}]{[\dots{}] but intended for
 use in speeding up dynamic web applications by alleviating database load.
 Memcached is an in-memory key-value store for small chunks of arbitrary
 data (strings, objects) from results of database calls, API calls, or page
@@ -232,7 +233,7 @@ unter der er die Daten schließlich einlagert.}
 \end{figure}
 
 Memcached hat zwei verschiedene Protokolle, welche zur Kommunikation benutzt
-werden können Text-Protokoll und Binär-Protokoll. Diese Protokolle machen
+werden können: Text-Protokoll und Binär-Protokoll. Diese Protokolle machen
 spezielle Einschränkungen auf den Schlüssel. Die maximale Schlüssellänge ist
 immer 250 Zeichen lang und die Protokolle definieren, welche Zeichen erlaubt
 sind als Schlüssel. Als Werte lassen sich einfache Zeichenketten oder
@@ -240,7 +241,7 @@ Binärdaten ablegen. Dies hat zur Folge, dass Memcached nicht direkt ein
 Datenbankergebnis speichern kann, sondern dies erst von der Anwendung in eine
 serialisierbare Struktur gepackt werden muss. Außerdem muss die Anwendung
 wissen, was sich für Datentypen hinter den einzelnen Schlüssel verbergen.
-Die maximale Größe ist dabei standartmäßig 64 MB, dies lässt allerdings
+Die maximale Größe ist dabei standartmäßig 64 MB, diese lässt sich allerdings
 konfigurieren. Jedoch sollte die Größe immer kleiner sein als
 der \gls{RAM}-Speicher des Memcached-Dienstes mit dem kleinsten
 zugewiesenen \gls{RAM}.
@@ -251,15 +252,15 @@ Untergruppe der Festplatten-Systeme. Redis lässt sich jedoch auch in die Gruppe
 der Cache-Systeme eintragen, wenn eine bestimmte Konfiguration benutzt wird.
 Redis wurde im Jahr 2009 von Salvatore Sanfilippo bei Redis Labs entwickelt.
 Die aktuelle Version ist 4.0.1. Redis ist komplett in C geschrieben.
-Der Zugriff auf einen Redis-Server erfolgt wie bei Memcached über eine Bibliothek.
-Allerdings darf bei Redis im Gegensatz zu Memcached nur ein Dienst pro Server
-laufen. Der wichtigste Unterschied zwischen Redis und Memcached sind die
-erlaubten Schlüssel und Werte. Wie schon oben erwähnt sind Schlüssel in Memcached
-immer Zeichenketten mit einer maximalen Länge von 250 Zeichen. Im Gegensatz dazu
-existiert diese Einschränkung bei Redis nicht. Dort ist es ohne Probleme möglich
-auch ein Bild als Schlüssel zu verwenden.
+Der Zugriff auf einen Redis-Server erfolgt wie bei Memcached über eine
+Bibliothek. Allerdings darf bei Redis im Gegensatz zu Memcached nur ein Dienst
+pro Server laufen. Der wichtigste Unterschied zwischen Redis und Memcached sind
+die erlaubten Schlüssel und Werte. Wie schon oben erwähnt, sind Schlüssel in
+Memcached immer Zeichenketten mit einer maximalen Länge von 250 Zeichen. Im
+Gegensatz dazu existiert diese Einschränkung bei Redis nicht. Dort ist es ohne
+Probleme möglich, auch ein Bild als Schlüssel zu verwenden.
 
-\foreignblockquote{english}[\cite{Redis2010}]{Redis keys are binary safe, this
+\foreignblockquote{english}[\cite{Redis2017}]{Redis keys are binary safe, this
 means that you can use any binary sequence as a key, from a string like ‚foo‘
 to the content of a JPEG file. The empty string is also a valid key. [\dots]}
 
@@ -297,18 +298,18 @@ die Schlüssel und die Werte serialisieren und de-serialisieren kann.
 \end{figure}
 
 \section{Verteiltes System/Cluster-Bildung}
-NoSql-Systeme sind wie oben schon erwähnt dafür ausgelegt horizontal zu
+NoSql-Systeme sind wie oben schon erwähnt dafür ausgelegt, horizontal zu
 skalieren. Dort werden also eher zusätzliche Server mit weniger Ressourcen
 angeschafft, als bestehende Server zu erweitern, um eine gemeinsame Aufgabe zu
-erfüllen. Solche Systeme werde auch verteilte Systeme oder Cluster genannt.
+erfüllen. Solche Systeme werden auch verteilte Systeme oder Cluster genannt.
 
 \blockquote[\cite{Distener2012}]{Ein verteiltes System besteht aus unabhängigen,
 über ein Rechnernetz kommunizierenden Rechnern, wobei keine zentrale
 Systemsteuerung existiert und der Verteilungsaspekt für alle Benutzer des
 Systems möglichst transparent ist.}
 
-Wobei der Unterschied zwischen einem verteilten System und einem Cluster
-nicht klar definiert ist.
+Der Unterschied zwischen einem verteilten System und einem Cluster
+ist dabei nicht klar definiert.
 
 Verteilte System lassen sich in zwei Kommunikationsmodelle einteilen
 Client-Server und Peer-To-Peer. Bei Client-Server stellen ein oder mehrere
@@ -316,12 +317,12 @@ Server einen Dienst bereit und die Clients wollen diesen Dienst nutzen. Dabei
 haben, die einzelnen Server keine Information über die anderen Server. Eine
 Sonderform von Client-Server ist das Master-Slave-Prinzip. Master-Slave ist ein
 Zusammenschluss von mindestens zwei Rechnern. Ein Rechner ist dabei der Master
-und übernimmt alle Anfragen der Clients entgegen und verteilt diese an seine
+und nimmt alle Anfragen der Clients entgegen und verteilt diese an seine
 Slaves. Somit sind die Master nach außen hin Server und nach innen auch Clients
 und die Slaves sind nur Server.
 
 Im Gegensatz dazu ist bei Peer-To-Peer die Aufteilung in Client und Server
-nicht klar, den ein einzelner Rechner kann sowohl Client als auch Server sein.
+nicht klar, denn ein einzelner Rechner kann sowohl Client als auch Server sein.
 Des Weiteren haben die einzelnen Rechner Informationen über die anderen Rechner.
 Werden mehrere Master-Slave-Systeme zu einem Peer-To-Peer kombiniert entsteht
 ein Master-Master-Netz. Die Clients senden ihre Anfrage an einen beliebigen
@@ -332,15 +333,15 @@ Memcached ist ein klassisches Client-Server-System. Die Anwendungen, welche übe
 eine Bibliothek auf einen Memcached-Dienst zugreifen sind die Clients und die
 Memcached-Dienste sind die Server. Die verschiedenen Memcached-Dienste haben
 dabei keine Information über andere Dienste, sondern nur die Bibliothek hat
-diese Information
+diese Information.
 
-\foreignblockquote{english}[\cite{Memcached2015}]{The servers understand how
+\foreignblockquote{english}[\cite{Memcached2017}]{The servers understand how
 store and fetch items. They also manage when to evict or reuse memory. Servers
 are Disconnected From Each Other Memcached servers are unaware of each other.
 There is no crosstalk, no syncronization, no broadcasting, no replication.}
 
 Falls man doch Replikation und andere Funktionen benötigt muss dies die
-Bibliothek leisten oder andere Bibliothek.
+Bibliothek leisten oder eine andere Bibliothek.
 
 \subsection{Redis}
 Redis ist wie Memcached ein klassisches Client-Server-System. Die Anwendungen,
@@ -349,7 +350,7 @@ die Redis-Dienste sind die Server. Redis lässt sich nun je nach Anforderung
 konfigurieren. Im einfachsten Fall haben die verschieden Redis-Server keine
 Informationen über die anderen Server. Hier muss wie bei Memcached die
 Bibliothek die zusätzliche Funktionalität bereitstellen, wie die Verbindung zu
-mehrere Redis-Diensten.
+mehreren Redis-Diensten.
 
 Eine etwas verbesserte Konfiguration ist mehrere Server im Master-Slave-Modus
 zu betreiben. Dadurch ist sichergestellt, dass sowohl Master als auch die
@@ -358,11 +359,11 @@ Jedoch muss die Bibliothek immer noch den Verbindungsaufbau übernehmen und auch
 solche Sachen wie, dass nur auf dem Master geschrieben und von den Slaves nur
 gelesen werden darf. Dies war bis Redis 3.0 die Standardkonfiguration.
 
-Ab Redis 3.0 ist es möglich einen echten Cluster mit Master-Master-Replikation
+Ab Redis 3.0 ist es möglich, einen echten Cluster mit Master-Master-Replikation
 zu betreiben. Für solch eine Konfiguration werden laut der offiziellen
 Dokumentation 6-Server benötigt 3-Master mit jeweils 1-Slave.
 
-\foreignblockquote{english}[\cite{Redis2010}]{Note that the minimal cluster
+\foreignblockquote{english}[\cite{Redis2017}]{Note that the minimal cluster
 that works as expected requires to contain at least three master nodes. For your
 first tests it is strongly suggested to start a six nodes cluster with three
 masters and three slaves.}
@@ -372,14 +373,15 @@ Voldemort ist im Gegensatz zu den beiden anderen Systemen ein
 Peer-To-Peer-Netzwerk. Alle beteiligten Server haben die Information, welche
 anderen Server noch Teil des Clusters sind. Im Gegensatz zu Memcached und Redis
 sind bei Voldemort die Server in der Lage, die Daten automatisch zu
-partitionieren und zu replizieren. Dadurch ist es möglich dynamisch auf geplante
-und ungeplante Ausfälle zu reagieren. Dabei ist der Punkt zu beachten, dass
-dies nur für den Initialen-Cluster funktioniert. Wenn sich die Cluster-Struktur
-ändert, weil ein gänzlich neuer Server hinzugefügt wird, dann funktioniert die
-automatische Replikation und Partitionierung nicht mehr, sondern die neue
-Konfiguration muss erst auf alle Knoten neu verteilt werden. Bei Voldemort muss
-die Bibliothek auch nicht mehr alle Server kennen, sondern es reicht ein Server
-aus von dem sich die Bibliothek, dann die Cluster-Konfiguration holen kann.
+partitionieren und zu replizieren. Dadurch ist es möglich, dynamisch auf
+geplante und ungeplante Ausfälle zu reagieren. Dabei ist der Punkt zu beachten,
+dass dies nur für den Initialen-Cluster funktioniert. Wenn sich die
+Cluster-Struktur ändert, weil ein gänzlich neuer Server hinzugefügt wird, dann
+funktioniert die automatische Replikation und Partitionierung nicht mehr,
+sondern die neue Konfiguration muss erst auf alle Knoten neu verteilt werden.
+Bei Voldemort muss die Bibliothek auch nicht mehr alle Server kennen, sondern es
+reicht ein Server aus, von dem sich die Bibliothek, dann die
+Cluster-Konfiguration holen kann.
 
 \section{Persistenz}
 Persistenz ist die Eigenschaft Objekte, Daten, logische Verbindungen,~\dots{}
@@ -388,7 +390,7 @@ wichtig, falls es zu einem geplanten oder ungeplanten Ausfall kommt, um die
 Daten wiederherzustellen.
 
 Bei einem einzelnen Server ist dies einfach, entweder das System unterstützt
-Persistenz oder eben nicht. Sobald aber mehr als ein Server im Einsatz sind wie
+Persistenz oder eben nicht. Sobald aber mehr als ein Server im Einsatz ist wie
 bei NoSql-Systemen, wo Server dynamisch hinzugefügt oder entfernt werden können,
 spielt die Architektur des Systems eine Rolle. Denn dort kann entweder keine
 Persistenz sein, ein einzelner Server sichert die Daten, einige Server sichern
@@ -400,17 +402,17 @@ Inkonsistenzen kommen.
 
 \subsection{Memcached}
 Memcached stellt selbst keine Persistenz zur Verfügung. Wenn ein oder mehrere
-Server geplant oder ungeplant ausfallen, dann sind die Daten, die aktuell im
+Server geplant oder ungeplant ausfallen, dann sind die Daten die aktuell im
 \gls{RAM} waren verloren. Die Daten lassen sich auch nicht von anderen Server
 holen, da immer nur ein Server die speziellen Daten speichert und wie oben
-erwähnt auch keine Kommunikation zwischen den einzelnen Memcached-Diensten
+erwähnt, auch keine Kommunikation zwischen den einzelnen Memcached-Diensten
 existiert.
 
 \subsection{Redis}
 Redis kann mit Persistenz oder ohne betrieben werden. Wenn man Redis ohne
 Persistenz betreibt, hat man ein besseres Memcached-System.
 
-\foreignblockquote{english}[\cite{Redis2010}]{If you wish, you can
+\foreignblockquote{english}[\cite{Redis2017}]{If you wish, you can
 disable persistence at all, if you want your data to just exist as long as the
 server is running.}
 
@@ -418,22 +420,22 @@ Standardmäßig wird Redis immer mit Persistenz betrieben. Redis bietet dabei
 zwei Persistenzmethoden an, welche auch zusammen benutzt werden können. Diese
 beiden Methoden sind \gls{RDB} und \gls{AOF}.
 
-\foreignblockquote{english}[\cite{Redis2010}]{It is possible to combine both
+\foreignblockquote{english}[\cite{Redis2017}]{It is possible to combine both
 AOF and RDB in the same instance. Notice that, in this case, when Redis
 restarts the AOF file will be used to reconstruct the original dataset since it
 is guaranteed to be the most complete.}
 
-Bei \gls{RDB} werden die Daten aus dem \gls{RAM} in regelmäßigen Abständen ein
+Bei \gls{RDB} werden die Daten aus dem \gls{RAM} in regelmäßigen Abständen als
 Zwischenstand auf die Festplatte geschrieben.
 
-\foreignblockquote{english}[\cite{Redis2010}]{The RDB persistence performs
+\foreignblockquote{english}[\cite{Redis2017}]{The RDB persistence performs
 point-in-time snapshots of your dataset at specified intervals.}
 
 Im Gegenzug wird bei \gls{AOF} jede Änderung in einer Datei angehängt und ein
 separater Thread liest die Datei ein und schreibt die Änderungen auf die
 Festplatte.
 
-\foreignblockquote{english}[\cite{Redis2010}]{The AOF persistence logs every
+\foreignblockquote{english}[\cite{Redis2017}]{The AOF persistence logs every
 write operation received by the server, that will be played again at server
 startup, reconstructing the original dataset. Commands are logged using the same
 format as the Redis protocol itself, in an append-only fashion.}

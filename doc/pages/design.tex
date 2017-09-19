@@ -1,8 +1,8 @@
 \chapter{Design}
-In diesem Kapitel geht es darum die einzelnen Benchmark-Werkzeuge zu
+In diesem Kapitel geht es darum, die einzelnen Benchmark-Werkzeuge zu
 vergleichen. Dabei werden die einzelnen Tools analysiert und die Schwachstellen
 aufgezeigt. Dazu werden für die einzelnen Schwachstellen Lösungsansätze
-präsentiert bezugnehmend auf den derzeitigen Stand der Entwicklung der
+präsentiert, bezugnehmend auf den derzeitigen Stand der Entwicklung der
 jeweiligen Werkzeuge.
 
 Des Weiteren wird der umzusetzende Anwendungsfall beschrieben. Dazu gehört, was
@@ -15,7 +15,7 @@ Wenn man eine eigene Anwendung entwickelt hat oder eine fremde Anwendung
 integrieren möchte stellt sich schnell auch die Frage, ob die Anwendung auch für
 die ursprünglich geplanten Bedürfnisse auch geeignet ist. Um diese Frage
 beantworten zu können, braucht man erst einmal eine Vorstellung, welche
-Grenzwerte, sogenannte Metriken, noch akzeptable sind. Danach kann man sich ein
+Grenzwerte, sogenannte Metriken, noch akzeptabel sind. Danach kann man sich ein
 Test-Setup überlegen, wie man die ausgewählten Metriken misst. Anschließend kann
 man die gemessenen Werte mit den geplanten Werten vergleichen, ob die Anwendung
 für den geplanten Einsatzzweck geeignet ist.
@@ -41,7 +41,7 @@ externe Werkzeuge. Diese Werkzeuge bauen jedoch alle auf einer alten Version von
 \enquote{mc-benchmark}. Die Entwickler haben dabei mehr oder weniger alles
 unnötige gelöscht und dann das Werkzeug angepasst. Jedoch benutzt keines der
 Werkzeuge die existierende Bibliothek \enquote{libmemcached}, welche extra von
-Memcached bereitgestellt wird und zusätzliche Konfiguration Möglichkeiten für
+Memcached bereitgestellt wird und zusätzliche Konfigurationsoptionen für
 Memcached bietet. Des Weiteren unterstützen die Werkzeuge nicht alle Methoden,
 die Memcached bereitstellt.
 
@@ -55,18 +55,18 @@ Firmen wie Amazon, Google, Yahoo,~\dots{} bereitgestellt werden und teilweise
 kostenpflichtig sind. Diese Werkzeuge sind dann aber auch in der Lage mehrere
 Systeme abzudecken. Ein Open-Source Tool, welches mit Redis und Memcached
 umgehen kann, ist
-memtier\footnote{\url{https://github.com/RedisLabs/memtier_benchmark}}.
+memtier\footnote{\url{https://github.com/RedisLabs/memtier\_benchmark}}.
 
-Aufgrund der wenigen Funktionalität und der nicht Benutzung von geeigneten
-Bibliotheken. Soll hier das Memcached-Werkzeug \enquote{mc-benchmark}
+Aufgrund der wenigen Funktionalität und der Nicht-Benutzung von geeigneten
+Bibliotheken, soll hier das Memcached-Werkzeug \enquote{mc-benchmark}
 umgeschrieben werden, um eine bessere Konfiguration zu ermöglichen und die
-fehlenden Methoden zu unterstützen. Dadurch ist es außerdem möglich einen
+fehlenden Methoden zu unterstützen. Dadurch ist es außerdem möglich, einen
 besseren Bezug zum Benchmark-Werkzeug von Redis herzustellen.
 
 \subsection{Analyse- und Desginprozess}
 Bevor überhaupt auch nur eine Zeile Code entwickelt wird, erfolgt immer eine
 Analyse- und Design-Phase. Dabei geht es darum die Anforderungen und Bedürfnisse
-der Kunden zu erfahren und festzuhalten um damit später in der Design-Phase
+der Kunden zu erfahren und festzuhalten, um damit später in der Design-Phase
 bessere Entscheidungen treffen zu können. Dies ist notwendig, damit am Ende auch
 das vom Kunden gewünschte Produkt abgeliefert wird. Da dies ein komplexer
 Prozess ist, sind verschiedene Modelle und Methoden entwickelt worden, um diesen
@@ -79,12 +79,12 @@ die sich genau zwischen den beiden Seiten befinden. Allerdings muss man dabei
 beachten, dass dies nur Modelle sind und keine konkreten Arbeitsweisen, sondern
 jedes Modell muss an die jeweilige Umgebung angepasst werden. Die
 schwergewichtigen Modelle legen dabei ihren Fokus auf Organisation und
-Dokumentation und die leichtgewichtig Modelle legen ihren Fokus mehr auf der
+Dokumentation und die leichtgewichtigen Modelle legen ihren Fokus mehr auf der
 Implementierung des Projektes. Egal für welches Modell man sich am Ende auch
 entscheidet, kann man die Anforderung des Kunden nicht mit einem oder wenigen
 Terminen vollständig erfassen, da meistens die Kunden zu Beginn des Projektes
 selbst noch keine Vorstellung von der benötigten Funktionalität haben, sondern
-diese erst entwickeln müssen. Die leichtgewichtig Modelle haben hierbei einen
+diese erst entwickeln müssen. Die leichtgewichtigen Modelle haben hierbei einen
 Vorteil, da sie besser mit dynamischen Änderungswünschen des Kunden umgehen
 können als die schwergewichtigen Modelle.
 
@@ -95,7 +95,7 @@ sein müssen, um zum Beispiel die Serveradresse des Servers zu ändern, gegen de
 die Tests gefahren werden. Der andere Punkt ist, dass die beiden bisherigen
 Methoden \enquote{get} und \enquote{set} auch weiterhin unterstützt werden. Es
 kann jedoch im Laufe der Entwicklung zu Änderungen kommen, wenn man auf
-\enquote{libmemcached} statt \enquote{hiredis} benutzt wird.
+\enquote{libmemcached} statt \enquote{hiredis} umstellt.
 
 Allerdings gibt es noch eine Reihe zusätzlicher Anforderungen. Dazu gehört,
 dass die fehlenden Methoden vom Werkzeug mit abgedeckt werden sollen, wie
@@ -115,7 +115,7 @@ müssen, greift man auf Bibliotheken zu, welche diesen Prozess implementieren.
 Für alle gängigen NoSql-Systeme und Programmiersprachen gibt es heutzutage eine
 entsprechende Bibliothek oder auch mehrere, von denen meistens eine vom
 Hersteller bevorzugt wird. Da der Anwendungsfall in der Programmiersprache
-Python umgesetzt werden soll, kommen auch nur die Bibliothek für Python in
+Python umgesetzt werden soll, kommen auch nur die Bibliotheken für Python in
 Frage. Dabei unterscheidet man zwischen Bibliotheken, welche rein in Python
 umgesetzt sind und solchen die nur als Wrapper für die jeweiligen C Bibliotheken
 dienen. Das NoSql-System Voldemort hat nur eine Python-Bibliothek, welche von
@@ -166,7 +166,7 @@ diesen zu benutzen und die Django-Implementierung selbst zu entwickeln. Der
 Voldemort-Client benutzt dabei verschiedene Key-Value-Transformatoren und zur
 Kommunikation Googles-Protobuf-Protokoll. Bei ersten anfänglichen Tests erwies
 sich der Client jedoch als nicht kompatibel mit dem
-Server\footnote\url{https://github.com/voldemort/voldemort/issues/237}}.
+Server\footnote{\url{https://github.com/voldemort/voldemort/issues/237}}.
 Dieses Problem ist auch den Entwicklern bekannt, jedoch sind dort keine
 Python-Entwickler mehr verfügbar. Nach Inspektion des Quellcodes gab es jedoch
 einen REST-Server, welcher eine REST-API bereitstellt. Somit ergab sich das

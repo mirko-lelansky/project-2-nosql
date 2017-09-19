@@ -1,6 +1,6 @@
 \chapter{Realisierung}
 Im diesem Kapitel geht es darum, die in der Design-Phase genannten Änderungen
-praktisch umzusetzen. Dazu gehört die einzelnen Schritte und die dabei
+praktisch umzusetzen. Dazu gehört, die einzelnen Schritte und die dabei
 aufgetretenen Probleme zu erläutern. Dabei wird zuerst auf die
 Benchmark-Werkzeuge und anschließend auf den Anwendungsfall eingegangen.
 
@@ -36,7 +36,7 @@ Die Ergebnisse der Benchmarktests sind für Redis in \ref{bench:Redis}, für
 Memcached in \ref{bench:Memcached} und für Voldemort in \ref{bench:Voldemort}
 dargestellt. Für Memcached und Redis sind dabei die selben Basiseinstellungen
 genutzt worden. Bei Voldemort ist dies nicht möglich, da es eine andere
-Konfiguration bestitzt wie schon erwähnt wurde. 
+Konfiguration bestitzt, wie schon erwähnt wurde. 
 
 \begin{minipage}{\linewidth}
 \lstinputlisting[caption={Redis-Benchmark},label={bench:Redis}]{bench/redis-benchmark.txt}
@@ -94,16 +94,16 @@ Web-Anwendung mit einer Übersicht über die Anzahl der Einträge in der Datenba
 Derzeit gibt es zwei Benutzergruppen, welche verschiedene Bereiche der Anwendung
 benutzen können. Die erste Gruppe ist die Gruppe der Administratoren, welche
 Zugriff auf alle Funktionen der Anwendung haben. Die Administratoren können neue
-Bücher anlegen, editieren oder löschen. Dies erfolgt über das von Django
+Bücher anlegen, editieren oder löschen. Dies erfolgt über den von Django
 bereitgestellte Administrator-Bereich. Der Administrator-Bereich ist eigentlich
-die Admin-Anwendung. Ein Django-Anwendung ist eine spezielle Komponente, welche
+die Admin-Anwendung. Eine Django-Anwendung ist eine spezielle Komponente, welche
 genau eine Aufgabe erfüllt. Eine einmal entwickelte Anwendung sollte im
 Ideal-Fall so konzipiert sein, dass sie in mehreren Django-Projekten zum Einsatz
 kommen kann. In der Abbildung \ref{fig:django-create} ist die erzeugte Seite
 für die Bücher dargestellt, welche vom der erwähnten Django-Admin Anwendung
 erzeugt wurde.
-Ein Django-Projekt besteht dabei zwingen aus mindestens einer
-Django-Anwendung. Die Admin-Anwendung erzeugt dabei, für einmal definiert
+Ein Django-Projekt besteht dabei zwingend aus mindestens einer
+Django-Anwendung. Die Admin-Anwendung erzeugt dabei, für einmal definierte
 Modelle, selbständig Oberflächen um die CRUD-Methoden bereitzustellen.
 
 \begin{figure}
@@ -138,7 +138,7 @@ Zusätzlich wurde noch ein Django-Kommando definiert um schnell viele Abstimmung
 vorzunehmen zu lassen.
 
 \subsection{Anbindung der NoSql-Systeme}
-Wie schon in der Design-Phase erwähnt existiert für Memcached bereits eine
+Wie schon in der Design-Phase erwähnt, existiert für Memcached bereits eine
 Django-Implementierung und auch die benötigten Client-Bibliotheken. Diese wurden
 einfach in die bestehende Anwendung integriert, in dem die benötigten
 Konfigurationseinstellungen vorgenommen wurden. Dabei wurde zusätzlich die Hilfe
@@ -152,7 +152,7 @@ neuer \gls{REST}-Client entwickelt. Der Client wird dabei mit den Rest-Endpunkte
 den Node-Ids initialisiert. Danach kann der Anwender die Methoden frei benutzen.
 Ein Abmelden, wie bei den anderen Bibliotheken ist hierbei nicht notwendig, da
 alle Verbindungen über das HTTP-Protokoll laufen und nicht direkt über Sockets.
-Danach wurde der neue Voldemort-Cache implementiert. Dabei wurde die von
+Danach wurde der neue Voldemort-Cache implementiert. Dabei wurde die
 Django-Cache-Implementierung für Memcached als Ausgangsbasis genommen, da von
 der API her Memcached und Voldemort ähnlich sind im Gegensatz zu Redis.
 

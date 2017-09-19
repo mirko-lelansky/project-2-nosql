@@ -18,7 +18,7 @@ Der geplannte Anwendungsfall wurde trotzt der Schwierigkeiten von Voldemort
 umgesetzt und je nach Bedarf können alle drei NoSql-Systeme benutzt werden.
 Jedoch haben Memcached und Redis gegenüber Voldemort den Vorteil, dass sie schon
 eine längere Entwicklungszeit hinter sich haben und deshalb sowohl die
-NoSql-System, wie auch Bibliotheken und Tools stabiler sind. Deshablb würde
+NoSql-Systeme, wie auch Bibliotheken und Tools stabiler sind. Deshablb würde
 ich nur Memcached und Redis im produktiven Einsatz empfehlen, da die Bibliothek
 bei beiden Systemen ausgereifter sind, was einen Einsatz in unterschiedlichen
 Systemen ermöglicht. Voldemort ist hier noch zu sehr auf die Java-Welt fixiert
@@ -41,7 +41,7 @@ entsprechende Bindings, wie \gls{JNI}, Jython, JRuby,~\dots{} verfügen.
 
 Die andere Möglichkeit besteht, darin die Webseite weiter zu entwickeln und
 dann darauf gewisse Lasttests zu fahren. Dadurch könnte man feststellen, welche
-System sich im Echtzeitbetrieb besser verhalten. Dazu müsste man jedoch dann
+Systeme sich im Echtzeitbetrieb besser verhalten. Dazu müsste man jedoch dann
 konsequent die Low-Level-Cache-API von Django benutzen, damit man auch die
 Funktionalität von Redis benutzen kann um Listen und Mengen zu speichern.
 Außerdem konnte man die in der Implementierung angesprochenen Probleme noch
