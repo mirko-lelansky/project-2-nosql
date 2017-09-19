@@ -5,6 +5,10 @@ It should be compared [Redis](http://www.redis.io),
 [Memcached](http://www.memcached.org) and one free selected system which is
 [Voldemort](http://project-voldemort.com).
 
+If you want to get the full project with submodule run
+`git clone --recursive https://github.com/mirko-lelansky/project-2-nosql`
+otherwise run `git clone https://github.com/mirko-lelansky/project-2-nosql`.
+
 == Modules
 
 The project contains two modules one for the documentation and one
