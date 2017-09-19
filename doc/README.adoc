@@ -10,7 +10,10 @@ This project needs a LaTeX environment with Biber.
 
 === Installation
 
-If you want to build the project, you need to use latexmk main.tex .
+If you want to build the project, you need to use `latexmk main.tex` . The
+result report will be generated in main.pdf.
+
+== Contributing
 
 == License
 

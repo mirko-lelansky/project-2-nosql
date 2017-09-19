@@ -2,21 +2,38 @@
 
 The goal of the project is to compare different NoSql Key-Value-Stores.
 It should be compared [Redis](http://www.redis.io),
-[Memcached](http://www.memcached.org) and one free selected system.
+[Memcached](http://www.memcached.org) and one free selected system which is
+[Voldemort](http://project-voldemort.com).
 
 == Modules
 
 The project contains two modules one for the documentation and one
-for the code.
+for the code. The code modules contains 4 different projects. Every project
+has a personal README file, where you find special information about the
+project.
+
+The mcbenchmark project is the refactored redis-benchmark tool for memcached.
+
+The voldemort-client project is the python REST-Client for Voldemort. Which you
+can use in your projects to access the voldemort cluster. The django-voldemort
+project is the django-cache-integration for voldemort which uses the
+voldemort-client. The booksite project is a django project which uses the
+django-voldemort project to compare the different python libs for the caches.
 
 == Dependencies
 
-The documentation module uses LaTeX with bibliographies. That means you have to
-install Texlive or MikeTex with Biber.
+The build the documentation module you need a LaTeX environment with
+bibliographies. That means you have to install TexLive, MikeTex or some other
+implementation with Biber for the references.
 
-The code module use Python and C. That means you have to install a Python and C
-environment. You need also some addional libraries for the NoSql Systems to
-access their APIs.
+The code module use Python and C. The mcbenchmark tool is a C project which is
+build with autotools. That mean you need autotools installed and a
+C environemnt. You need also the program gengetopt installed to build the
+commandline interface.
+
+The other project are python projects. That means you need a python environemnt
+installed. The booksite project and the django-voldemort project needed django
+and the libraries for the NoSql-Systems.
 
 == License
 
