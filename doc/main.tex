@@ -5,23 +5,24 @@
 \defaultfontfeatures{Ligatures=TeX, Scale=MatchLowercase}
 \newcommand{\euro}{€}
 \usepackage[usenames, dvipsnames]{xcolor}
-\usepackage{polyglossia}
+\usepackage[babelshorthands]{polyglossia}
 \setdefaultlanguage[spelling=new]{german}
 \setotherlanguage[variant=british]{english}
 \usepackage[autostyle=true]{csquotes}
 \renewcommand{\mkblockquote}[4]{\openautoquote#1\closeautoquote#2#4#3}
-\usepackage[backend=biber, style=iso-authoryear]{biblatex}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
 \addbibresource{bib/main.bib}
 \usepackage[section]{placeins}
 \usepackage{scrhack}
 \usepackage{listings}
 \usepackage{longtable, booktabs}
 \usepackage{graphicx, grffile}
-\usepackage[unicode=true]{hyperref}
+\usepackage[unicode=true, colorlinks=true, linkcolor=black, urlcolor=black]{hyperref}
 \usepackage[acronym, toc]{glossaries}
 \include{ext/glossaries}
 \makeglossaries
 \setlength{\parskip}{\medskipamount}
+%% Deutsche Kurzfassung und englisches Abstract auf eine Seite
 \renewenvironment{abstract}{
     \begin{center}
     \normalfont\sectfont\nobreak\abstractname

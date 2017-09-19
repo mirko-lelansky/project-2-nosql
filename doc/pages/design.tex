@@ -100,7 +100,7 @@ kann jedoch im Laufe der Entwicklung zu Änderungen kommen, wenn man auf
 Allerdings gibt es noch eine Reihe zusätzlicher Anforderungen. Dazu gehört,
 dass die fehlenden Methoden vom Werkzeug mit abgedeckt werden sollen, wie
 \enquote{add}, \enquote{replace}, \enquote{append}, \enquote{prepand},
-\enquote{delete}, \enquote{incr/decr},~\dots{] . Diese Anforderung ist einfach
+\enquote{delete}, \enquote{incr/decr},~\dots{} . Diese Anforderung ist einfach
 umzusetzen, da man auf die vorhandenen Tests zugreifen und diese ggf. anpassen
 kann.
 
@@ -163,9 +163,9 @@ Funktionalität bereit. Dabei ist es möglich den mitgelieferten Client zu
 benutzen oder die Bibliothek py-redis. Für Voldemort gibt es keine
 Django-Implementierung, sondern nur einen Python-Client, sodass geplant war
 diesen zu benutzen und die Django-Implementierung selbst zu entwickeln. Der
-Voldemort-Client benutzt dabei verschiedene Key-Value-Transformatoren und zur
-Kommunikation Googles-Protobuf-Protokoll. Bei ersten anfänglichen Tests erwies
-sich der Client jedoch als nicht kompatibel mit dem
+Voldemort-Client benutzt dabei verschiedene Key"~Value"=Transformatoren
+und zur Kommunikation Googles-Protobuf-Protokoll. Bei ersten anfänglichen Tests
+erwies sich der Client jedoch als nicht kompatibel mit dem
 Server\footnote{\url{https://github.com/voldemort/voldemort/issues/237}}.
 Dieses Problem ist auch den Entwicklern bekannt, jedoch sind dort keine
 Python-Entwickler mehr verfügbar. Nach Inspektion des Quellcodes gab es jedoch

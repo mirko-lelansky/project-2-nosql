@@ -48,7 +48,7 @@ Punkten, die ein System erfüllen kann wie: \cite{Edlich2011}
         Datenreplikation.
     \item Das System besitz eine einfache \gls{API}.
     \item Dem System liegt meist auch ein anderes Konsitenzmodell zugrunde:
-        Eventuelly Consistenz und \gls{BASE} aber nicht \gls{ACID}.
+        \gls{BASE} aber nicht \gls{ACID}.
 \end{itemize}
 
 Allerdings muss man bei NoSql gewisse Einschränkungen machen. NoSql-Systeme
@@ -86,13 +86,13 @@ heute noch an.
 
 \subsection{Arten von NoSql-Systemen}
 Wie oben schon beschrieben existieren eine Vielzahl an unterschiedlichsten
-NoSql-Systemen. Dies hat zur Folge, dass es nicht leicht ist das für seinen
-Anwendungsfall passende System zu finden. Deshalb kam der Gedanke NoSql-Systeme
-nach bestimmten Kriterien zu sortieren um eine bessere Entscheidung treffen zu
-können. Schnell entwickelten sich mehrere Kriterien. Die gröbste Einteilung,
-die man vorgenommen hat, war die Einteilung in Kern-NoSql-Systeme und
-Soft-NoSql-Systemen. Wobei die Grenze und der Unterschied zwischen den Gruppen
-nicht klar geregelt ist. Danach werden NoSql-Systeme häufig nach ihrem
+NoSql"~Systemen. Dies hat zur Folge, dass es nicht leicht ist das für
+seinen Anwendungsfall passende System zu finden. Deshalb kam der Gedanke
+NoSql-Systeme nach bestimmten Kriterien zu sortieren um eine bessere Entscheidung
+treffen zu können. Schnell entwickelten sich mehrere Kriterien. Die gröbste
+Einteilung, die man vorgenommen hat, war die Einteilung in Kern-NoSql-Systeme
+und Soft-NoSql-Systemen. Wobei die Grenze und der Unterschied zwischen den
+Gruppen nicht klar geregelt ist. Danach werden NoSql-Systeme häufig nach ihrem
 zugrundeliegenden Datenmodell eingeteilt. Nachfolgend eine Einteilung der
 NoSql-Systeme nach dem Datenmodell mit einer Erklärung was man sich unter dem
 jeweiligen Typ vorzustellen hat und einige Vertreter davon:
@@ -173,7 +173,7 @@ Gruppen:
         Wiederherstellungsdateien an. Damit sind solche Systeme gut gegen
         Ausfälle geschützt. Zu dieser Gruppe gehören Systeme wie Redis.
     \item[Sortierte Schlüssel-Wert-Systeme] Sortierte Schlüssel-Wert-System
-        verfügen über Ordnungs- und Sortierfunktionen auf den Schlüsseln.
+        verfügen über Ordnungs"~ und Sortierfunktionen auf den Schlüsseln.
         Außerdem gibt es System die die Schlüssel in einer Extra Index-Tabelle
         speichern. Zu dieser Gruppe gehören Systeme wie BerkleyDB.
     \item[Eventual Consistence-Systeme] Solche Systeme stellen sicher, dass das
@@ -291,10 +291,10 @@ und Werte keine Einschränkung. Es muss lediglich eine Klasse geschrieben werden
 die Schlüssel und die Werte serialisieren und de-serialisieren kann.
 
 \begin{figure}
-    \centering
-    \includegraphics[scale=0.5]{images/voldemort-architecture.jpeg}
-    \caption{Logische Architektur eines Voldemort-Clients mit einem Voldemort-Server \cite{Voldemort2017}}
-    \label{fig:voldemort-logical-architecture}
+\centering
+\includegraphics[scale=0.5]{images/voldemort-architecture.jpeg}
+\caption{Logische Architektur eines Voldemort-Clients mit einem Voldemort-Server \cite{Voldemort2017}}
+\label{fig:voldemort-logical-architecture}
 \end{figure}
 
 \section{Verteiltes System/Cluster-Bildung}
