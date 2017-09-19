@@ -1,4 +1,3 @@
-SET: 0.00
 ====== SET ======
   10003 requests completed in 0.14 seconds
   50 parallel clients

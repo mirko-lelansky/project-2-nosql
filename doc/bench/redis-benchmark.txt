@@ -1,5 +1,3 @@
-SET: 208095.23
-SET: 224825.34
 ====== SET ======
   100000 requests completed in 0.44 seconds
   50 parallel clients
@@ -11,8 +9,6 @@ SET: 224825.34
 100.00% <= 5 milliseconds
 226757.36 requests per second
 
-GET: 228032.25
-GET: 229970.84
 ====== GET ======
   100000 requests completed in 0.46 seconds
   50 parallel clients
